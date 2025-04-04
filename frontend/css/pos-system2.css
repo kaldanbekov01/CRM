@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham_medium.woff2') format('woff2'),
+         url('/fonts/gotham_medium.woff') format('woff'),
+         url('/fonts/gotham_medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gotham', Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f5f5f5;
+    color: #00A27F;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #00A27F;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #F9B814;
+    text-decoration: none;
+    margin-bottom: 55px;
+}
+
+.logo span {
+    color: #007058;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.secure-icon {
+    font-size: 18px;
+    color: #333;
+}
+
+/* User Information */
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: #FFF4CC;
+    padding: 8px 15px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.user-role {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Main content */
+.main-content {
+    background-color: #007058;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    margin-top: 100px;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Right block-1 */
+.sub-header{
+    top: 0;
+    display: flex;
+    align-items: center;
+    padding: 40px 40px;
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-bottom: 0.1px solid rgba(255, 255, 255, 0.097);
+}
+
+.back-btn{
+    background-color: #007058;
+    border: none;
+    color: white;
+    font-size: 24px;
+    padding-left: 50px;
+}
+
+/* Left block-2 */
+.block-2{
+    background-color: #57A090;
+    width: 90%;
+    margin-right: 100px;
+}
