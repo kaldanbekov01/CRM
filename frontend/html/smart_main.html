@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartKasip</title>
     <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
-    <link rel="stylesheet" href="{{ asset('css/style_main.css') }}">
+    <link rel="stylesheet" href="../css/style_main.css">
 </head>
-
 <body>
     <header>
-        <div class="logo">Smart<span>Kasip</span></div>
+        <a class="logo" href="../html/smart_main.html">Smart<span>Kasip</span></a>
         <nav>
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/home') }}" class="login">Dashboard</a>
-                @else
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="getDemo">Get a demo</a>
-                        <a href="{{ route('login') }}" class="login">Login</a>
-                        <a href="#">EN <span class="arrow"></span></a>
-                    @endif
-                @endauth
-            @endif
+            <a href="#">Get a demo</a>
+            <a href="../html/login.html" class="login">Login</a>
+            <a href="#">EN <span class="arrow"></span></a>
         </nav>
     </header>
-
+    
     <section class="hero">
         <h1>Your personal business assistant <br> <span class="highlight">A CRM</span> that thinks for you</h1>
-        <p>Accept payments and issue receipts without buying a cash <br>register immediately after registering with
-            SMARTKASIP</p>
+        <p>Accept payments and issue receipts without buying a cash <br>register immediately after registering with SMARTKASIP</p>
         <button class="cta-button">Get started for free</button>
     </section>
 
@@ -83,11 +72,10 @@
             <img src="../images/smart_main/freedom_logo.png" alt="Freedom Holding">
         </div>
     </section>
-
+    
     <section class="devices">
         <h1>Work from any device</h1>
-        <p>Accept payments and issue receipts without buying a cash register immediately after registering with
-            SmartKasip</p>
+        <p>Accept payments and issue receipts without buying a cash register immediately after registering with SmartKasip</p>
         <div class="device-image">
             <img src="../images/smart_main/laptop.png" alt="SmartKasip Dashboard">
         </div>
@@ -116,5 +104,4 @@
         </div>
     </footer>
 </body>
-
 </html>
