@@ -22,23 +22,6 @@ body {
     overflow: hidden;
 }
 
-a {
-    text-decoration: none;
-    color: #00A27F;
-}
-
-.logo {
-    font-size: 40px;
-    font-weight: bold;
-    color: #F9B814;
-    text-decoration: none;
-    margin-bottom: 55px;
-}
-
-.logo span {
-    color: #007058;
-}
-
 .main-content {
     margin-left: 330px; 
     padding: 150px 40px 30px; 
@@ -133,6 +116,23 @@ header h1 {
 .secure-icon {
     font-size: 18px;
     color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #00A27F;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #F9B814;
+    text-decoration: none;
+    margin-bottom: 55px;
+}
+
+.logo span {
+    color: #007058;
 }
 
 /* User Information */

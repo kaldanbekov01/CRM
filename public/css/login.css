@@ -27,6 +27,7 @@ body {
 
 /* Left-side */
 .left-panel {
+    position: fixed;
     background-color: #007058; 
     color: white;
     width: 40%;
@@ -42,8 +43,8 @@ body {
 .logo {
     font-size: 40px;
     font-weight: bold;
-    margin-bottom: 20px;
     color: #F9B814;
+    text-decoration: none;
 }
 
 .logo span {
@@ -69,6 +70,7 @@ body {
 /* Right-side form */
 .right-panel {
     background-color: #F8F8F8;
+    margin-left: 40%;
     padding: 40px;
     width: 60%;
     display: flex;
@@ -97,37 +99,16 @@ body {
     font-weight: 500;
 }
 
-.email {
-    display: flex;
-    border: 1px solid white;
-    border-radius: 8px;
-    overflow: hidden;
-    background-color: white;
-    align-items: center;
-    padding: 4px 10px;
-}
-
-.email select {
-    appearance: none;
-    border: none;
+.country-code {
+    appearance: none; 
     background: transparent;
-    font-size: 16px;
-    color: #0A0A0C;
-    cursor: pointer;
-    outline: none;
-    padding-right: 8px;
-}
-
-.email-input input {
     border: none;
-    flex: 1;
-    padding: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
     font-size: 16px;
+    color: #292D32;
     outline: none;
-    background-color: transparent;
-    border-left: 1px solid #E6E6E6;
 }
-
 
 .email-input select:focus {
     outline: none;
@@ -152,7 +133,6 @@ input[type="password"] {
     font-size: 16px;
     margin-bottom: 10px;
 }
-
 
 button {
     background-color: #026451;

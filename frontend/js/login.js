@@ -1,4 +1,8 @@
-async function checkLogin() {
+function isValidPhone(phone) {
+    return /^\d{10}$/.test(phone);
+}
+
+function checkLogin() {
     const countryCode = document.getElementById('countryCode').value;
     const phone = document.getElementById('phone');
     const password = document.getElementById('password');
@@ -6,31 +10,38 @@ async function checkLogin() {
 
     const fullPhone = countryCode + phone.value;
 
-    phone.style.border = '1px solid white';
+    [phone, password].forEach(input => input.style.border = '1px solid white');
     errorMessage.style.display = 'none';
 
-    try {
-        const response = await fetch('/api/check-login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ phone: fullPhone, password: password.value })
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-            phone.style.border = '2px solid green';
-            alert('Login successful!');
-        } else {
-            phone.style.border = '2px solid red';
-            errorMessage.style.display = 'block';
-        }
-    } catch (error) {
-        console.error('Login request failed', error);
-        errorMessage.innerText = 'Something went wrong. Try again later.';
-        errorMessage.style.display = 'block';
+    if (!isValidPhone(phone.value)) {
         phone.style.border = '2px solid red';
+        errorMessage.innerText = 'Enter a valid 10-digit phone number.';
+        errorMessage.style.display = 'block';
+        return;
     }
+
+    if (password.value.length < 6) {
+        password.style.border = '2px solid red';
+        errorMessage.innerText = 'Password must be at least 6 characters.';
+        errorMessage.style.display = 'block';
+        return;
+    }
+
+    alert('Login successful! Redirecting...');
+
+    phone.value = '';
+    password.value = '';
+    window.location.href = 'dashboard.html'; 
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', () => {
+            phoneInput.value = phoneInput.value.replace(/\D/g, '');
+            if (phoneInput.value.length > 10) {
+                phoneInput.value = phoneInput.value.slice(0, 10);
+            }
+        });
+    }
+});

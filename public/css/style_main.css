@@ -30,6 +30,7 @@ header {
   font-size: 40px;
   font-weight: bold;
   color: #F9B814;
+  text-decoration: none;
 }
 
 .logo span {
@@ -77,28 +78,6 @@ nav a {
   padding: 10px 20px; 
   display: inline-block;
   text-align: center;
-}
-
-.getDemo {
-  position: relative;
-  text-decoration: none;
-  color: #2D6653; 
-  padding-bottom: 5px;
-}
-
-.getDemo::after{
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: 0;
-  background-color: #2D6653;
-  transition: width 0.3s ease-in-out;
-}
-
-.getDemo:hover::after {
-  width: 100%;
 }
 
 .arrow {
