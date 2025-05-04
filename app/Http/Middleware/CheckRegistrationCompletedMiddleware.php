@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -11,20 +10,28 @@ class CheckRegistrationCompletedMiddleware
 {
     /**
      * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $user = Auth::user();
-        if (
-            empty($user->firstName) || 
-            empty($user->lastName) || 
-            empty($user->businessName)
-        ) {
-            return redirect()->route('register.step2.form');
+        // ✅ Skip registration check for employees
+        if (Auth::guard('employee')->check()) {
+            return $next($request);
+        }
+
+        // ✅ Check only for users (web guard)
+        if (Auth::guard('web')->check()) {
+            $user = Auth::guard('web')->user();
+
+            if (
+                is_null($user->firstName) ||
+                is_null($user->lastName) ||
+                is_null($user->businessName)
+            ) {
+                return redirect()->route('register.step2.form');
+            }
         }
 
         return $next($request);
     }
 }
+

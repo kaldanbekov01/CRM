@@ -22,7 +22,7 @@
             <div class="progress-container">
                 <div class="block1">
                     <p class="step-indicator">Account Setup</p>
-                    <p class="step-number">1/2</p>
+                    <p class="step-number">2/2</p>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill"></div>

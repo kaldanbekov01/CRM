@@ -1,0 +1,247 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f5f5f5;
+    color: #00A27F;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  color: #00A27F;
+}
+
+a {
+    text-decoration: none;
+    color: #00A27F;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #F9B814;
+    text-decoration: none;
+    margin-bottom: 55px;
+}
+
+.logo span {
+    color: #007058;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 330px;
+    height: 100vh;
+    padding: 40px;
+    background-color: #F0F4F3;
+    border-right: 1px solid #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+.menu-wrapper {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+    overflow-y: auto;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    color: #00A27F;
+    cursor: pointer;
+    padding: 16px 0;
+    transition: padding-left 0.3s ease;
+}
+
+.menu li i {
+    font-size: 18px;
+    color: #00A27F;
+    width: 20px;
+    text-align: center;
+}
+
+.menu li:hover {
+    font-weight: bold;
+    padding-left: 8px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 330px; 
+    width: calc(100vw - 330px);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.secure-icon {
+    font-size: 18px;
+    color: #333;
+}
+
+/* User Information */
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: #FFF4CC;
+    padding: 8px 15px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.user-role {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Main content  */
+.main-content {
+    margin-left: 330px; 
+    padding: 100px 40px 30px; 
+    background-color: white;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    overflow-y: auto;
+    gap: 30px;
+}
+
+.stats {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background-color: #E7F9F5;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card span {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #00A27F;
+}
+
+.stats .stat-card:nth-child(1) {
+    background-color: #DFF5EF;
+}
+.stats .stat-card:nth-child(2) {
+    background-color: #F0F4F3;
+}
+.stats .stat-card:nth-child(3) {
+    background-color: #E0F5EA;
+}
+
+/* Charts */
+.charts {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.chart-card {
+    background-color: #E7F9F5;
+    padding: 20px;
+    border-radius: 12px;
+    min-height: 320px;
+    height: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.chart-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00A27F;
+    margin-bottom: 10px;
+}
+
+/* Chart card */
+.chart-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    background-color: #E7F9F5;
+    color: #333;
+}
+
+.chart-card table thead {
+    background-color: none;
+    color: #00A27F;
+}
+
+.chart-card table th,
+.chart-card table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e1e1e1;
+    text-align: left;
+}
+
+.chart-card table tr:hover {
+    background-color: #f9f9f9;
+}
+
+canvas {
+    width: 100% !important;
+    height: 260px !important;
+    display: block;
+}

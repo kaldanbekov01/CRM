@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="login_title">Login</title>
+    <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
+    <link rel="stylesheet" href="../css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <a class="logo" href="../html/smart_main.html">Smart<span>Kasip</span></a>
+            <h1 data-i18n="email_page_title">Make your business easier with us</h1>
+            <p class="description" data-i18n="login_description">
+                SmartKasip is a modern CRM system designed to support and automate small businesses.
+                We help manage clients, orders, finances, and analytics in one user-friendly interface.
+            </p>
+        </div>
+        <div class="right-panel">
+            <h2 data-i18n="welcome_back">Welcome back!</h2>
+            <form class="login-form" id="loginForm">
+                <label for="phone" data-i18n="phone_number">Phone number*</label>
+                <div class="phone-input">
+                    <select class="country-code" id="countryCode">
+                        <option value="+7">+7</option>
+                        <option value="+1">+1</option>
+                        <option value="+44">+44</option>
+                    </select>
+                    <input type="tel" id="phone" placeholder="Enter phone number">
+                </div>
+
+                <label for="password" data-i18n="password">Password*</label>
+                <input type="password" id="password" placeholder="Enter password">
+
+                <p id="errorMessage" data-i18n="error_message" style="color: red; display: none;">Phone number or password is incorrect.</p>
+
+                <button type="button" onclick="checkLogin()" data-i18n="login">Login</button>
+
+                <div class="links">
+                    <p><span data-i18n="no_account">Don't you have an account?</span> <a data-i18n="register" href="../html/signup.html"> Register</a></p>
+                    <p><span data-i18n="forgot_password">You forgot password?</span> <a data-i18n="reset_password" href="../html/reset.html"> Reset password</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+    <script src="../js/lang.js"></script>
+</body>
+</html>

@@ -55,5 +55,6 @@ class Kernel extends HttpKernel
 
         // ✅ Add your custom middleware here
         'registration_completed' => \App\Http\Middleware\CheckRegistrationCompletedMiddleware::class,
+        'multiauth' => \App\Http\Middleware\MultiAuth::class,
     ];
 }

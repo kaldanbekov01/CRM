@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup more information</title>
+    <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
+    <link rel="stylesheet" href="../css/signup_info2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <a class="logo" href="../html/smart_main.html">Smart<span>Kasip</span></a>
+            <h1 data-i18n="email_page_title">Make your business easier with us</h1>
+            <p class="description" data-i18n="email_page_description">
+                SmartKasip is a modern CRM system designed to support and automate small businesses.
+                We help manage clients, orders, finances, and analytics in one user-friendly interface.
+            </p>
+        </div>
+        <div class="right-panel">
+            <div class="progress-container">
+                <div class="block1">
+                    <p class="step-indicator"><span data-i18n="set_up">Account set up</span></p>
+                    <p class="step-number">2/2</p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <a class="sub-header" href="../html/signup_info1.html"><i class="fas fa-arrow-left"></i></a>
+            </div>
+        
+            <div class="forma">
+                <h2 data-i18n="company_size_title">What is the size of your company?</h2>
+                <p class="subtext" data-i18n="company_size_subtext">We can personalize and suggest better plans according to company’s size</p>
+            
+                <div class="company-size-options">
+                    <button class="company-option" data-size="1-10" data-i18n="size_1_10">1 to 10</button>
+                    <button class="company-option" data-size="10-25" data-i18n="size_10_25">10 to 25</button>
+                    <button class="company-option" data-size="26-50" data-i18n="size_26_50">26 to 50</button>
+                </div>
+            
+                <button class="next-button" onclick="submitCompanySize()" data-i18n="next">Next</button>
+                <p id="sizeError" style="color: red; display: none; margin-top: 10px;" data-i18n="select_size_error">Please select your company size.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/signup_info2.js"></script>
+    <script src="../js/lang.js"></script>
+</body>
+</html>

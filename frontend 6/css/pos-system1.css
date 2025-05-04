@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f5f5f5;
+    color: #00A27F;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  color: #00A27F;
+}
+
+.icon-system{
+  width: 54px;
+  height: 54px;
+  color: #00A27F;
+}
+
+.main-content {
+    margin-left: 330px; 
+    padding: 150px 40px 30px; 
+    background-color: #007058;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    overflow-y: auto;
+    gap: 30px;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 330px;
+    height: 100vh;
+    padding: 40px;
+    background-color: #F0F4F3;
+    border-right: 1px solid #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+.menu-wrapper {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+    overflow-y: auto;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    color: #00A27F;
+    cursor: pointer;
+    padding: 16px 0;
+    transition: padding-left 0.3s ease;
+}
+
+.menu li i {
+    font-size: 18px;
+    color: #00A27F;
+    width: 20px;
+    text-align: center;
+}
+
+.menu li:hover {
+    font-weight: bold;
+    padding-left: 8px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 330px; 
+    width: calc(100vw - 330px);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.secure-icon {
+    font-size: 18px;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #00A27F;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #F9B814;
+    text-decoration: none;
+    margin-bottom: 55px;
+}
+
+.logo span {
+    color: #007058;
+}
+
+/* User Information */
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: #FFF4CC;
+    padding: 8px 15px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.user-role {
+    font-size: 12px;
+    color: #666;
+}
+
+ /* Pos container */
+.pos-screen {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    background-color: #E7F9F5;
+    padding: 20px;
+    border-radius: 20px;
+    width: 100%;
+    height: 45%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.349);
+}
+
+.pos-display {
+    width: 100%;
+    height: 100px;
+    background-color: #D9F1EC;
+    margin: 10px 0;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 24px;
+    text-align: right;
+    overflow: hidden;
+}
+
+.select-product-btn {
+    width: 100%;
+    padding: 31px;
+    border: none;
+    background-color: #E7F9F5;
+    color: #007058;
+    font-size: 24px;
+    border-radius: 20px;
+    margin: 28px 0px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.349);
+}
+
+.pos-keypad {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.keypad-btn {
+    width: 99px;
+    height: 102px;
+    font-size: 24px;
+    background-color: #E7F9F5;
+    color: #007058;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.349);
+}
+
+.keypad-btn.widep {
+    grid-column: span 3;
+    width: 100%;
+    margin-top: 10px;
+    height: 70px; 
+}
+
+.keypad-btn.wide {
+    grid-column: span 3;
+    width: 100%;
+    height: 70px;
+}
+
+.keypad-btn:hover, .payment-btn:hover {
+    background-color: #D1ECE5;
+}
+
+.pos-payment {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 20%;
+    gap: 25px;
+}
+
+.payment-btn {
+    flex: 1;
+    font-size: 20px;
+    padding: 20px;
+    background-color: #E7F9F5;
+    color: #007058;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px; 
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.349);
+}
+
+.payment-btn:hover{
+    background-color: #F9B814;
+}
+
+.payment-btn.active {
+    background-color: #F9B814 !important;
+    font-weight: bold;
+}
+
+.payment-btn i {
+    font-size: 40px; 
+    font-weight: 200;
+}

@@ -111,7 +111,7 @@ body {
 }
 
 .progress-fill {
-    width: 50%;
+    width: 100%;
     background-color: #007058;
     height: 100%;
     border-radius: 10px;

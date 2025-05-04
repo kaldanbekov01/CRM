@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product</title>
+  <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
+  <link rel="stylesheet" href="../css/pos-system3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a class="logo" href="../html/smart_main.html">Smart<span>Kasip</span></a>
+        </div>
+        <div class="header-right">
+          <?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M44 24V9H24H4V24V39H24" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 30C30 29 35 27 35 27C35 27 40 29 40 30C40 38 35 40 35 40C35 40 30 38 30 30Z" fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 9L24 24L44 9" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <a href="profile.html">
+          <div class="user-info">
+              <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="user-details">
+                  <span class="user-name">Aidyn Aliturliyev</span>
+                  <span class="user-role">Admin</span>
+              </div>
+          </div>
+          </a>
+      </div>
+    </header>
+
+  <div class="form-container">
+    <h2>Add a product</h2>
+
+    <form class="product-form">
+        <div class="form-grid">
+          <!-- Левая колонка -->
+          <div class="field">
+            <label>Barcode</label>
+            <input type="text" id="barcode" placeholder="487..." maxlength="13" pattern="487[0-9]{10}" />
+          </div>
+          <div class="field">
+            <label>Cost price</label>
+            <input type="number" id="cost-price" placeholder="0" />
+          </div>
+          <div class="field">
+            <label>Selling price</label>
+            <input type="number" id="selling-price" placeholder="0" />
+          </div>
+      
+          <div class="field">
+            <label>Name *</label>
+            <input type="text" id="product-name" placeholder="enter" />
+          </div>
+          <div class="field">
+            <label>Mark up</label>
+            <input type="number" id="markup" placeholder="0" />
+          </div>
+          <div class="field">
+            <label>&nbsp;</label>
+            <div class="switch-container">
+              <span class="switch-label active">%</span>
+              <span class="switch-label">KZT</span>
+            </div>
+          </div>
+
+        <div class="field wide">
+            <label>Category</label>
+            <input type="text" id="category" placeholder="enter" />
+          </div>
+          <div class="field">
+            <label>Quantity</label>
+            <div class="quantity">
+              <button type="button" id="decrease-qty">-</button>
+              <span id="quantity-value">1</span>
+              <button type="button" id="increase-qty">+</button>
+            </div>
+          </div>
+      
+          
+        </div>
+      
+        <div class="actions">
+          <button type="button" class="cancel" onclick="goBack()">Cancel</button>
+          <button type="submit" class="add" id="add-btn" disabled>Add</button>
+        </div>
+      </form>
+  </div>
+
+  <script src="../js/pos-system3.js"></script>
+  <script src="../js/lang.js"></script>
+</body>
+</html>

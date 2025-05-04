@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
     <link rel="stylesheet" href="../css/login.css">
 </head>
+
 <body>
     <div class="container">
         <div class="left-panel">
@@ -19,24 +21,26 @@
         </div>
         <div class="right-panel">
             <h2>Welcome back!</h2>
-            <form method="POST" class="login-form" id="loginForm" action="{{ route('login') }}">
+            <form method="POST" class="login-form" id="loginForm" action="{{ route('multi.login') }}">
                 @csrf
-                <label for="email">Email Address*</label>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter email address" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <label for="email">Email*</label>
+                <input id="email" type="email" class="form-control @error('email') is-invalid 
+                @enderror" name="email" placeholder="Enter email"
+                    value="{{ old('email') }}" required autofocus>
 
                 <label for="password">Password*</label>
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Enter password" required autocomplete="current-password">
+                <input id="password" type="password" name="password" placeholder="Enter password" required>
 
-                <!-- Добавляем сообщение об ошибке, которое скрыто по умолчанию -->
-                <p id="errorMessage" style="color: red; display: none;">Email or password is incorrect.</p>
+                @if ($errors->has('email'))
+                    <p style="color: red;">{{ $errors->first('email') }}</p>
+                @endif
 
-                <!-- Заменяем кнопку type="submit" на type="button" чтобы не отправляла сразу форму -->
                 <button type="submit" onclick="checkLogin()">Login</button>
 
                 <div class="links">
                     <p>Don't you have an account? <a href="{{ route('register') }}">Register</a></p>
                     @if (Route::has('password.request'))
-                    <p>You forgot password? <a href="{{ route('password.request') }}">Reset password</a></p>
+                        <p>You forgot password? <a href="{{ route('password.request') }}">Reset password</a></p>
                     @endif
                 </div>
             </form>
@@ -63,7 +67,10 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ phone: fullPhone, password: password.value })
+                    body: JSON.stringify({
+                        phone: fullPhone,
+                        password: password.value
+                    })
                 });
 
                 const result = await response.json();
@@ -84,4 +91,5 @@
         }
     </script>
 </body>
+
 </html>

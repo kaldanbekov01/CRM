@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
+    <link rel="stylesheet" href="../css/signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <a class="logo" href="../html/smart_main.html">Smart<span>Kasip</span></a>
+            <h1 data-i18n="email_page_title">Make your business easier with us</h1>
+            <p class="description" data-i18n="email_page_description">
+                SmartKasip is a modern CRM system designed to support and automate small businesses.
+                We help manage clients, orders, finances, and analytics in one user-friendly interface.
+            </p>
+        </div>
+        <div class="right-panel">
+            <h2 data-i18n="signup">Sign up</h2>
+            <form class="login-form" id="signupForm">
+                <label for="email" data-i18n="work_email_label">Work email*</label>
+                <input type="email" id="email" data-i18n-placeholder="work_email_placeholder" placeholder="Enter your work email" required>
+        
+                <label for="bin" data-i18n="bin_label">BIN*</label>
+                <input type="text" id="bin" data-i18n-placeholder="bin_placeholder" placeholder="112233445566" maxlength="12" required>
+        
+                <label for="phone" data-i18n="phone_label">Phone number*</label>
+                <div class="phone-input">
+                    <select class="country-code" id="countryCode">
+                        <option value="+7">+7</option>
+                        <option value="+1">+1</option>
+                        <option value="+44">+44</option>
+                    </select>
+                    <input type="tel" id="phone" data-i18n-placeholder="phone_placeholder" placeholder="Enter phone number" maxlength="10" required>
+                </div>
+        
+                <label for="password" data-i18n="password_label">Password*</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" data-i18n-placeholder="password_placeholder" placeholder="Enter password" required>
+                    <img src="../images/signup/eye.jpeg" class="toggle-password" onclick="togglePassword('password', this)" alt="Show password">
+                </div>
+        
+                <label for="confirmPassword" data-i18n="confirm_password_label">Repeat the password*</label>
+                <div class="password-wrapper">
+                    <input type="password" id="confirmPassword" data-i18n-placeholder="confirm_password_placeholder" placeholder="Repeat your password" required>
+                    <img src="../images/signup/eye.jpeg" class="toggle-password" onclick="togglePassword('confirmPassword', this)" alt="Show password">
+                </div>
+        
+                <p id="passwordMatchMessage" style="color: red; display: none;" data-i18n="password_mismatch">Passwords don't match</p>
+        
+                <ul id="passwordRules" style="font-size: 14px; list-style: none; padding-left: 0;">
+                    <li id="rule-lower" data-i18n="rule_lower">✔ One lowercase character</li>
+                    <li id="rule-upper" data-i18n="rule_upper">✔ One uppercase character</li>
+                    <li id="rule-number" data-i18n="rule_number">✔ One number</li>
+                    <li id="rule-special" data-i18n="rule_special">✔ One special character</li>
+                    <li id="rule-length" data-i18n="rule_length">✔ 8 characters minimum</li>
+                </ul>
+        
+                <p style="font-size: 13px; color: #777;">
+                    <span data-i18n="terms_note">By registering for an account, you are consenting to our </span>
+                    <a href="#" style="color:#026451; text-decoration: none;" ><span data-i18n="terms_service"> Terms of Service and</span></a>  
+                    <a href="#" style="color:#026451; text-decoration: none;" ><span data-i18n="privacy">Global Privacy Statement</span></a>.<br>
+                    <span data-i18n="have_account?">Do you have an account?</span>
+                    <a href="../html/login.html" style="color:#026451; text-decoration: none;" ><span data-i18n="login_link"> Login</span></a>.
+                </p>
+        
+                <button type="button" onclick="submitSignup()" data-i18n="get_started">Get started free</button>
+            </form>
+        </div>
+        
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/signup.js"></script>
+    <script src="../js/lang.js"></script>
+</body>
+</html>

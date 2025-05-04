@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup more information</title>
+    <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
+    <link rel="stylesheet" href="../css/signup_info1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <a class="logo" href="../html/smart_main.html">Smart<span>Kasip</span></a>
+            <h1 data-i18n="email_page_title">Make your business easier with us</h1>
+            <p class="description" data-i18n="email_page_description">
+                SmartKasip is a modern CRM system designed to support and automate small businesses.
+                We help manage clients, orders, finances, and analytics in one user-friendly interface.
+            </p>
+        </div>
+        <div class="right-panel">
+            <div class="progress-container">
+                <div class="block1">
+                    <p class="step-indicator"><span data-i18n="set_up">Account set up</span></p>
+                    <p class="step-number">1/2</p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <a class="sub-header" href="../html/signup.html"><i class="fas fa-arrow-left"></i></a>
+            </div>
+        
+            <div class="forma">
+                <h2 data-i18n="signup_title">Tell us a bit about you</h2>
+                <p class="subtext" data-i18n="signup_subtext">That will help us better account setup for you</p>
+        
+                <!-- <form action="/frontend/html/signup_info2.html" method="POST" class="signup-form"> -->
+                    <form id="signupForm" class="signup-form">
+                    <!-- CSRF токен для Laravel -->
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="first-name" data-i18n="first_name">First name</label>
+                            <input type="text" id="first-name" name="first_name" placeholder="First Name" data-i18n-placeholder="first_name_ph" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="last-name" data-i18n="last_name">Last name</label>
+                            <input type="text" id="last-name" name="last_name" placeholder="Last Name" data-i18n-placeholder="last_name_ph" required>
+                        </div>
+                    </div>
+                    <div class="input-group full-width">
+                        <label for="business-name" data-i18n="business_name">Business name</label>
+                        <input type="text" id="business-name" name="business_name" placeholder="Business Name" data-i18n-placeholder="business_name_ph" required>
+                    </div>
+                
+                    <button type="submit" class="next-button" data-i18n="next">Next</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/signup_info1.js"></script>
+    <script src="../js/lang.js"></script>
+</body>
+</html>

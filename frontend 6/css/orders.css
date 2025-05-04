@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    display: flex;
+    background-color: #f5f5f5;
+    color: #00A27F;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  color: #00A27F;
+}
+
+a {
+    text-decoration: none;
+    color: #00A27F;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #F9B814;
+    text-decoration: none;
+    margin-bottom: 55px;
+}
+
+.logo span {
+    color: #007058;
+}
+
+.main-content {
+    margin-left: 330px; 
+    padding: 100px 40px 30px; 
+    background-color: white;
+    width: calc(100vw - 280px);
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 330px;
+    height: 100vh;
+    padding: 40px;
+    background-color: #F0F4F3;
+    border-right: 1px solid #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+.menu-wrapper {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+    overflow-y: auto;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    color: #00A27F;
+    cursor: pointer;
+    padding: 16px 0;
+    transition: padding-left 0.3s ease;
+}
+
+.menu li i {
+    font-size: 18px;
+    color: #00A27F;
+    width: 20px;
+    text-align: center;
+}
+
+.menu li:hover {
+    font-weight: bold;
+    padding-left: 8px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 330px; 
+    width: calc(100vw - 330px);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.secure-icon {
+    font-size: 18px;
+    color: #333;
+}
+
+/* User Information */
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: #FFF4CC;
+    padding: 8px 15px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.user-role {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Charts */
+.main-content h1{
+    padding: 20px 0px;
+    color: #007058;
+}
+.charts{
+    display: flex;
+    justify-content: space-between;
+}
+.chart-card {
+    background-color: #E7F9F5;
+    padding: 15px;
+    margin: 20px 0px;
+    border-radius: 25px;
+    min-height: 300px; 
+    height: auto;
+    height: 320px;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.stats{
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    min-height: 300px; 
+    height: auto;
+    height: 320px;
+    width: 35%;
+    padding: 0px 30px;
+}
+
+.stats h3{
+    color: #007058;
+    padding: 5px 0px;
+}
+
+.stats h4{
+    color: #005241;
+    padding: 5px 0px;
+}
+
+.stat-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-family: 'Gotham', sans-serif;
+  color: #005241; 
+  font-size: 14px;
+}
+
+.stat-box {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  margin-right: 8px;
+}
+
+.stat-value {
+  font-weight: bold;
+  margin-right: 4px;
+}
+
+.stat-icon {
+  font-size: 13px;
+}
+
+/* Table */
+.table-container {
+    overflow-x: auto;
+    margin-top: 50px;
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #F3F4F4;
+    margin-right: 50px;
+}
+
+th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    white-space: nowrap;
+    border-radius: 30px;
+}
+
+th button {
+    background-color: #F3F4F4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 200;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+td {
+    padding: 20px;
+    font-size: 15px;
+    color: #222;
+    white-space: nowrap;
+    border-top: 1px solid #eee;
+}

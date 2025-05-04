@@ -1,17 +1,8 @@
-@font-face {
-    font-family: 'Gotham';
-    src: url('/fonts/gotham_medium.woff2') format('woff2'),
-         url('/fonts/gotham_medium.woff') format('woff'),
-         url('/fonts/gotham_medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gotham', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
@@ -20,6 +11,15 @@ body {
     color: #00A27F;
     height: 100vh; 
     overflow: hidden;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  color: #00A27F;
 }
 
 a {
@@ -40,10 +40,10 @@ a {
 }
 
 .main-content {
-    margin-left: 330px; 
+    margin-left: 250px; 
     padding: 100px 40px 30px; 
     background-color: white;
-    width: calc(100vw - 280px);
+    width: calc(100vw - 330px);
     height: 100vh;
     overflow-y: auto;
 }

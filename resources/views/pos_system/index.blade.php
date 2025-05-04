@@ -1,0 +1,58 @@
+@extends('layouts.app')
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/pos-system1.css') }}">
+@endpush
+
+@section('content')
+<div class="main-content">
+    <div class="block-1">
+        <div class="pos-screen">
+            <div class="pos-header">
+                <span>Смена</span>
+            </div>
+            <div id="pos-display" class="pos-display">0</div>
+        </div>
+
+        <button class="select-product-btn" onclick="window.location.href='{{ route('posSystem.select') }}'">+ Select a product</button>
+
+        <div class="pos-payment">
+            <button class="payment-btn" data-method="cash">
+                <svg class="icon-system" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 13H44V37H4V13Z" stroke="#007058" stroke-width="4" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4 21C8.41828 21 12 17.4183 12 13H4V21Z" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4 29C8.41828 29 12 32.5817 12 37H4V29Z" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M44 29V37H36C36 32.5817 39.5817 29 44 29Z" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M44 21C39.5817 21 36 17.4183 36 13H44V21Z" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 31C26.7614 31 29 28.3137 29 25C29 21.6863 26.7614 19 24 19C21.2386 19 19 21.6863 19 25C19 28.3137 21.2386 31 24 31Z" stroke="#007058" stroke-width="4" stroke-linejoin="round"/></svg>
+                <span data-i18n="cash">Cash</span>
+            </button>
+            <button class="payment-btn" data-method="card">
+                <svg class="icon-system" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 15L19.3714 25.5377C20.5 26.5 22.8282 28 25 26C27.2893 23.8918 25.5 21.5 25 21L17 15" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 8H27L38 18" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 33L44 33.0193" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 18V40H44V18H22.0002" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-i18n="card">Card</span>
+            </button>
+            <button class="payment-btn" data-method="qr">
+                <svg class="icon-system" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="11" y="4" width="26" height="40" rx="3" fill="none" stroke="#007058" stroke-width="4"/><path d="M22 10L26 10" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 38H28" stroke="#007058" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                QR
+            </button>
+        </div>
+    
+    </div>
+
+    <div class="block-2">
+        <div class="pos-keypad">
+            <div class="keypad-grid">
+                <button class="keypad-btn" data-value="7">7</button>
+                <button class="keypad-btn" data-value="8">8</button>
+                <button class="keypad-btn" data-value="9">9</button>
+                <button class="keypad-btn" data-value="4">4</button>
+                <button class="keypad-btn" data-value="5">5</button>
+                <button class="keypad-btn" data-value="6">6</button>
+                <button class="keypad-btn" data-value="1">1</button>
+                <button class="keypad-btn" data-value="2">2</button>
+                <button class="keypad-btn" data-value="3">3</button>
+                <button class="keypad-btn" data-action="clear">C</button>
+                <button class="keypad-btn" data-value="0">0</button>
+                <button class="keypad-btn" data-action="delete">←</button>
+                <button class="keypad-btn widep " data-action="add">+</button>
+                <button class="keypad-btn wide" data-action="next">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/pos-system1.js"></script>
+@endsection

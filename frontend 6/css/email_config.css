@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gotham', Arial, sans-serif;
+    background-color: #F8F8F8; 
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left-side */
+.left-panel {
+    position: fixed;
+    background-color: #007058; 
+    color: white;
+    width: 40%;
+    display: flex;
+    justify-content: top; 
+    flex-direction: column;
+    overflow-x: auto;
+    justify-content: top; 
+    align-items: flex-start; 
+    padding: 40px;
+    height: 100vh; 
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #F9B814;
+    text-decoration: none;
+}
+
+.logo span {
+    color: white;
+}
+
+.left-panel h1 {
+    font-size: 45px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    line-height: 1.3;
+    font-weight: 300;
+}
+
+.left-panel p {
+    font-size: 17px;
+    line-height: 1.5;
+    opacity: 0.70;
+    max-width: 300px;
+    font-weight: 100;
+}
+
+/* Right-side form */
+.right-panel {
+    background-color: #F8F8F8;
+    padding: 100px 170px;
+    margin-left: 40%;
+    margin-right: 5%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    color: #414143;
+}
+
+.right-panel h1 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.right-panel p {
+  font-size: 16px;
+  margin-bottom: 50px;
+  margin-top: 0px;
+  font-weight: 100;
+}
+
+.email-links {
+  display: flex;
+  align-items: left;
+  gap: 40px;
+  margin-bottom: 160px;
+}
+
+.email-links a {
+  color: #0046ff;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.outlook {
+  width: 32.25px;
+  height: 30px;
+}
+
+.gmail {
+  width: 40px;
+  height: 30px;
+}
+
+.email-help p {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.email-help a {
+  color: #004c3f;
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 16px;
+}

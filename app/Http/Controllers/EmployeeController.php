@@ -15,12 +15,28 @@ class EmployeeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $userId = Auth::user()->id; 
-        $employees = Employee::where('user_id', $userId)->get();
+        $userId = Auth::user()->id;
+
+        // Start query with user_id condition
+        $query = Employee::where('user_id', $userId);
+
+        // Apply search if present
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('email', 'like', "%$search%")
+                    ->orWhere('username', 'like', "%$search%");
+            });
+        }
+
+        // Paginate the final query (important!)
+        $employees = $query->paginate(2);
+
         return view('employee.index', compact('employees'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,6 +49,7 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:employees'],
             'username' => 'required|string|max:255',
             'password' => 'required|string|min:6',
             'user_id' => 'required|exists:users,id',

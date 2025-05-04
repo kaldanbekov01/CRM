@@ -97,6 +97,16 @@
     </div>
 
     <div class="right-panel">
+        <div class="progress-container">
+            <div class="block1">
+                <p class="step-indicator">Account Setup</p>
+                <p class="step-number">1/2</p>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
         <h2>Sign up</h2>
         <form method="POST" action="{{ route('register') }}" class="login-form" id="signupForm">
             @csrf
@@ -132,6 +142,8 @@
                 <img src="{{ asset('../images/signup/eye.jpeg') }}" class="toggle-password" onclick="togglePassword('password-confirm', this)" alt="Show password">
             </div>
 
+            <button type="submit">Get started free</button>
+
             <p class="terms">
                 By registering for an account, you are consenting to our 
                 <a href="#">Terms of Service</a> and 
@@ -139,8 +151,6 @@
                 Already have an account? 
                 <a href="{{ route('login') }}">Login</a>.
             </p>
-
-            <button type="submit">Get started free</button>
         </form>
     </div>
 </div>

@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gotham', Arial, sans-serif;
+    background-color: #F8F8F8; 
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Left-side */
+.left-panel {
+    position: fixed;
+    background-color: #007058; 
+    color: white;
+    width: 40%;
+    display: flex;
+    justify-content: top; 
+    flex-direction: column;
+    overflow-x: auto;
+    justify-content: top; 
+    align-items: flex-start; 
+    padding: 40px;
+    height: 100vh; 
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #F9B814;
+    text-decoration: none;
+}
+
+.logo span {
+    color: white;
+}
+
+.left-panel h1 {
+    font-size: 45px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    line-height: 1.3;
+    font-weight: 300;
+}
+
+.left-panel p {
+    font-size: 17px;
+    line-height: 1.5;
+    opacity: 0.70;
+    max-width: 300px;
+    font-weight: 100;
+}
+
+/* Right-side form */
+.right-panel {
+    background-color: #F8F8F8;
+    padding: 40px;
+    margin-left: 40%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #414143;
+}
+
+.right-panel h2 {
+    font-size: 32px;
+    font-weight: 500; 
+    color: #0A0A0C; 
+    margin-bottom: 30px;
+}
+
+.login-form {
+    width: 100%;
+    max-width: 520px; 
+}
+
+.login-form label {
+    font-size: 16px;
+    margin: 24px 0 8px;
+    display: block;
+    font-weight: 500;
+}
+
+.phone-input {
+    display: flex;
+    border: 1px solid white;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: white;
+    align-items: center;
+    padding: 4px 10px;
+}
+
+.phone-input select {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #0A0A0C;
+    cursor: pointer;
+    outline: none;
+    padding-right: 8px;
+}
+
+.phone-input input {
+    border: none;
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    background-color: transparent;
+    border-left: 1px solid #E6E6E6;
+}
+
+.country-code {
+    appearance: none; 
+    background: transparent;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #292D32;
+    outline: none;
+}
+
+.phone-input select:focus {
+    outline: none;
+}
+
+input[type="email"],
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 42%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    color: #777;
+    width: 18px;   
+    height: 18px;
+}
+
+.toggle-password:hover {
+    opacity: 0.8;
+}
+
+button {
+    background-color: #026451;
+    color: white;
+    font-family: 'Gotham', Arial, sans-serif;
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.links {
+    font-size: 14px;
+    color: #414143;
+    text-align: center;
+    margin-top: 10px;
+    line-height: 5px;
+}
+
+.links a {
+    color: #026451;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
