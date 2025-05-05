@@ -67,7 +67,6 @@ Route::group(['middleware' => ['multiauth']], function () {
     Route::get('/posSystem/select', [App\Http\Controllers\PosSystemController::class, 'select'])->name('posSystem.select');
     Route::get('/posSystem/search', action: [App\Http\Controllers\PosSystemController::class, 'search'])->name('posSystem.search');
     Route::get('/posSystem/show', action: [App\Http\Controllers\PosSystemController::class, 'show'])->name('posSystem.show');
-    Route::get('/posSystem/checkout', [App\Http\Controllers\PosSystemController::class, 'checkout'])->name('posSystem.checkout');
     Route::post('/posSystem/checkout', [App\Http\Controllers\PosSystemController::class, 'checkout'])->name('posSystem.checkout');
     // Order routes
     Route::get('/order', [App\Http\Controllers\OrderController::class, 'index'])->name('order.index');

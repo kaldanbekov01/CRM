@@ -29,7 +29,9 @@ RUN composer install --no-dev --optimize-autoloader
 EXPOSE 8000
 
 # Start Laravel with caching at runtime
-CMD php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache && \
+CMD if [ -f .env ]; then \
+      php artisan config:cache && \
+      php artisan route:cache && \
+      php artisan view:cache; \
+    fi && \
     php artisan serve --host=0.0.0.0 --port=8000
