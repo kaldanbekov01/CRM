@@ -4,7 +4,7 @@ FROM php:8.2-cli
 # Set working directory
 WORKDIR /var/www
 
-# Install PHP + system dependencies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git unzip zip curl \
     libpng-dev libonig-dev libxml2-dev libzip-dev \
@@ -21,19 +21,22 @@ RUN apt-get update && apt-get install -y \
 # Install Composer
 COPY --from=composer:2.5 /usr/bin/composer /usr/bin/composer
 
-# Copy all project files
+# Copy project files
 COPY . .
 
-# Set correct permissions
+# Set permissions
 RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www
 
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Laravel config cache and migrate at runtime (using Railway-injected .env)
+# Install Node packages and build assets
+RUN npm install && npm run build
+
+# Laravel cache and DB migrate
 CMD php artisan config:cache && \
     php artisan migrate --force && \
     php artisan serve --host=0.0.0.0 --port=8000
 
-# Expose port
+# Expose port 8000
 EXPOSE 8000
