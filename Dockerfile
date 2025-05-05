@@ -30,9 +30,6 @@ RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Install Node packages and build assets
-RUN npm install && npm run build
-
 # Laravel cache and DB migrate
 CMD php artisan config:cache && \
     php artisan migrate --force && \
