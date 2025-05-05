@@ -14,4 +14,7 @@ services:
         sync: false
       - key: DB_CONNECTION
         value: mysql
+        
+
+
       # Добавь DB_HOST, DB_USERNAME, DB_PASSWORD и другие по своей базе
