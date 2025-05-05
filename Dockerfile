@@ -1,5 +1,5 @@
 # Laravel PHP 8.2 environment with Composer
-FROM php:12.3-cli
+FROM php:8.2-cli
 
 # Set working directory
 WORKDIR /var/www
