@@ -97,7 +97,7 @@
     </div>
 
     <div class="right-panel">
-        <div class="progress-container">
+        {{-- <div class="progress-container">
             <div class="block1">
                 <p class="step-indicator">Account Setup</p>
                 <p class="step-number">1/2</p>
@@ -105,7 +105,7 @@
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
-        </div>
+        </div> --}}
 
         <h2>Sign up</h2>
         <form method="POST" action="{{ route('register') }}" class="login-form" id="signupForm">
@@ -142,19 +142,37 @@
                 <img src="{{ asset('../images/signup/eye.jpeg') }}" class="toggle-password" onclick="togglePassword('password-confirm', this)" alt="Show password">
             </div>
 
+            <p id="passwordMatchMessage" style="color: red; display: none;" data-i18n="password_mismatch">Passwords don't match</p>
+        
+                <ul id="passwordRules" style="font-size: 14px; list-style: none; padding-left: 0;">
+                    <li id="rule-lower" data-i18n="rule_lower">✔ One lowercase character</li>
+                    <li id="rule-upper" data-i18n="rule_upper">✔ One uppercase character</li>
+                    <li id="rule-number" data-i18n="rule_number">✔ One number</li>
+                    <li id="rule-special" data-i18n="rule_special">✔ One special character</li>
+                    <li id="rule-length" data-i18n="rule_length">✔ 8 characters minimum</li>
+                </ul>
+                <p style="font-size: 13px; color: #777;">
+                    <span data-i18n="terms_note">By registering for an account, you are consenting to our </span>
+                    <a href="#" style="color:#026451; text-decoration: none;" ><span data-i18n="terms_service"> Terms of Service and</span></a>  
+                    <a href="#" style="color:#026451; text-decoration: none;" ><span data-i18n="privacy">Global Privacy Statement</span></a>.<br>
+                    <span data-i18n="have_account?">Do you have an account?</span>
+                    <a href="{{ route('login') }}" style="color:#026451; text-decoration: none;" ><span data-i18n="login_link"> Login</span></a>.
+                </p>
+        
+
             <button type="submit">Get started free</button>
 
-            <p class="terms">
+            {{-- <p class="terms">
                 By registering for an account, you are consenting to our 
                 <a href="#">Terms of Service</a> and 
                 <a href="#">Global Privacy Statement</a>.<br>
                 Already have an account? 
                 <a href="{{ route('login') }}">Login</a>.
-            </p>
+            </p> --}}
         </form>
     </div>
 </div>
 
-<script src="{{ asset('../js/signup.js') }}"></script>
+<script src="{{ asset('js/signup.js') }}"></script>
 </body>
 </html>

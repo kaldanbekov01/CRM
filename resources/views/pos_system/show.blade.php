@@ -9,13 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/pos-system4.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
     @php
     $user = Auth::guard('web')->user();
     $employee = Auth::guard('employee')->check() ? Auth::guard('employee')->user() : null;
-@endphp
+    @endphp
 
     <header>
         <h1><i class="fas fa-shopping-cart"></i> Products </h1>
@@ -41,7 +42,7 @@
             <div>
                 <div class="sub-header">
                     <a href="{{ route('posSystem.index') }}"> <i class="fas fa-arrow-left"></i><button class="back-btn" data-i18n="select_product"> Select a product</button></a>
-                </div>    
+                </div>
                 <table class="product-table">
                     <thead>
                         <tr>
@@ -53,18 +54,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach ($cartItems as $item)
-                            <tr>
-                                <td>{{ $item['name'] }}</td>
-                                <td>{{ $item['quantity'] }}</td>
-                                <td>{{ number_format($item['price'], 2) }} KZT</td>
-                                <td>{{ number_format($item['price'] * $item['quantity'], 2) }} KZT</td>
-                                <td><button class="remove-btn" data-id="{{ $item['id'] }}">Remove</button></td>
-                            </tr>
-                        @endforeach --}}
+                        <!-- Cart items will be dynamically populated here -->
                     </tbody>
                 </table>
-             </div>   
+            </div>
         </div>
 
         <div class="block-2">
@@ -74,7 +67,7 @@
                     <span class="discount-label" data-i18n="discount">Discount</span>
                     <span class="discount-value">0%</span>
                 </div>
-        
+
                 <div class="payment-label" data-i18n="payment">Payment</div>
                 <div class="payment-section">
                     <div class="payment-option" id="cash">
@@ -87,7 +80,7 @@
                         </span>
                         <span class="payment-amount">0 KZT</span>
                     </div>
-        
+
                     <div class="payment-option" id="card">
                         <span class="payment-type">
                         <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,7 +90,7 @@
                         <span data-i18n="card">Card</span></span>
                         <span class="payment-amount">0 KZT</span>
                     </div>
-        
+
                     <div class="payment-option" id="mobile">
                         <span class="payment-type">
                         <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -108,7 +101,7 @@
                         <span class="payment-amount">0 KZT</span>
                     </div>
                 </div>
-        
+
                 <div class="payment-label" data-i18n="total">Total</div>
                 <div class="total-section">
                     <div class="total-row">
@@ -124,7 +117,7 @@
                         <span id="change" class="change-amount">0 KZT</span>
                     </div>
                 </div>
-        
+
                 <button id="next-btn" class="next-btn" data-i18n="next">Next</button>
             </div>
         </div>

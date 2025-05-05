@@ -20,17 +20,29 @@ class ProductController extends Controller
         } else {
             $user = Auth::guard('web')->user();
         }
+    
+        // Get the supplier IDs associated with the current user
         $supplierIds = Supplier::where('user_id', $user->id)->pluck('id');
-
+    
+        // Get all categories
+        $categories = Category::where('user_id',$user->id)->get();
+    
+        // Query the products with category and supplier relationships
         $products = Product::with(['category', 'supplier'])
             ->whereIn('supplier_id', $supplierIds)
             ->when($request->input('search'), function ($query, $search) {
                 $query->where('name', 'like', "%{$search}%");
             })
-            ->paginate(5);  // Ensuring pagination works
-
-        return view('product.index', compact('products'));
+            ->when($request->input('category'), function ($query, $categoryId) {
+                $query->where('category_id', $categoryId);
+            })
+            ->orderBy('category_id') // You can order them alphabetically by category name if desired
+            ->get();
+    
+        return view('product.index', compact('products', 'categories'));
     }
+    
+
 
 
     /**

@@ -10,78 +10,78 @@
         $employee = Auth::guard('employee')->check() ? Auth::guard('employee')->user() : null;
     @endphp
 
-    <div class="main-content" style="margin-left: 250px;">
-        <header>
-            <h1><i class="fas fa-shopping-cart"></i> Products </h1>
-            <div class="header-right">
-                <i class="fas fa-envelope secure-icon"></i>
-                <div class="user-info">
-                    <i class="fas fa-user-circle user-icon"></i>
-                    <div class="user-details">
-                        @if ($user)
-                            <span class="user-name">{{ $user->firstName }} {{ $user->lastName }}</span>
-                            <span class="user-role">Admin</span>
-                        @elseif ($employee)
-                            <span class="user-name">{{ $employee->username }}</span>
-                            <span class="user-role">Employee</span>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </header>
+    <header>
+        <h1><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+            </svg> Products </h1>
+        <div class="header-right">
+        </div>
+    </header>
 
-        <!-- Search Form -->
-        <div class="product-actions" style="margin-bottom: 20px;">
-            <form method="GET" action="{{ route('product.index') }}" class="search-bar d-flex" style="max-width: 400px;">
-                <input type="text" name="search" value="{{ request('search') }}" class="form-control me-2"
-                    placeholder="Search by product name or category">
-                <button type="submit" class="btn btn-outline-success"><i class="fas fa-search"></i></button>
+    <div class="main-content">
+        <div class="product-actions">
+            <div class="search-bar">
+                <form method="GET" action="{{ route('product.index') }}" class="search-bar d-flex"
+                    style="max-width: 400px;">
+                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Search"
+                        data-i18n="search" />
+                    <button>
+                        <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                        </svg>
+                    </button>
+                </form>
+            </div>
+
+            <form method="GET" action="{{ route('product.index') }}" class="sort-form">
+                <select name="category" onchange="this.form.submit()" class="form-control">
+                    <option value="">Sort by Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                            {{ $category->name }}
+                        </option>
+                    @endforeach
+                </select>
             </form>
+
+            <button onclick="window.location.href='{{ route('product.create') }}'" class="add-product"
+                data-i18n="+add_product">+ Add Product</button>
         </div>
 
-        <!-- Success Message -->
-        @if (session('success'))
-            <div class="alert alert-success mt-2">{{ session('success') }}</div>
-        @endif
-
-        <!-- Product Table -->
-        <div class="product-table">
-            <table class="table table-striped table-bordered align-middle">
-                <thead class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Stock</th>
-                        <th>Supplier</th>
-                        <th>Cost Price</th>
-                        <th>Selling Price</th>
-                        <th>Mark Up</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($products as $product)
+        <div class="product-content">
+            <div class="product-table">
+                <table>
+                    <thead>
                         <tr>
-                            <td>{{ $product->id }}</td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->category->name ?? '—' }}</td>
-                            <td>{{ $product->stock_quantity }}</td>
-                            <td>{{ $product->supplier->company_name ?? '—' }}</td>
-                            <td>{{ $product->wholesale_price }} ₸</td>
-                            <td>{{ $product->retail_price }} ₸</td>
-                            <td>{{ $product->retail_price - $product->wholesale_price }} ₸</td>
+                            <th data-i18n="id">ID</th>
+                            <th data-i18n="name_required">Name</th>
+                            <th data-i18n="cost_price">Bar Code</th>
+                            <th data-i18n="stock_quantity">Stock Quantity</th>
+                            <th data-i18n="supplier_id">Supplier ID</th>
+                            @if($user)<th data-i18n="wholesale_price">WholeSale Price</th>@endif
+                            <th data-i18n="selling_price">Selling Price</th>
+                            <th data-i18n="category">Category</th>
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="8" class="text-center">No products found.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-4">
-                {{ $products->appends(request()->query())->links() }}
+                    </thead>
+                    <tbody>
+                        @forelse ($products as $product)
+                            <tr>
+                                <td>{{ $product->id }}</td>
+                                <td>{{ $product->name }}</td>
+                                <td>{{ $product->barcode }}</td>
+                                <td>{{ $product->stock_quantity }}</td>
+                                <td>{{ $product->supplier->company_name ?? '—' }}</td>
+                                @if($user)<td>{{ $product->wholesale_price }} ₸</td>@endif
+                                <td>{{ $product->retail_price }} ₸</td>
+                                <td>{{ $product->category->name ?? '—' }}</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="8" class="text-center">No products found.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

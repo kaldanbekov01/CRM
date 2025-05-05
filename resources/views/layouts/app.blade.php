@@ -66,7 +66,7 @@
                             <path d="M25 26L32.2727 26L41 26" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg> <span data-i18n="pos_system">POS system</span></a></li>
-                <li><a href="orders.html">
+                <li><a href="{{ route('order.index') }}">
                         <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -88,7 +88,7 @@
                             <circle cx="24" cy="31" r="3" fill="none" stroke="#00A27F"
                                 stroke-width="4" />
                         </svg> <span data-i18n="products">Products</span></a></li>
-                <li><a href="clients.html">
+                <li><a href="{{ route('client.index') }}">
                         <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="14" cy="29" r="5" fill="none" stroke="#00A27F"
@@ -104,7 +104,7 @@
                             <path d="M34 24C34 18.4772 29.5228 14 24 14C18.4772 14 14 18.4772 14 24" stroke="#00A27F"
                                 stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                         </svg> <span data-i18n="clients">Clients</span></a></li>
-                <li><a href="financials.html">
+                <li><a href="{{ route('financial.index') }}">
                         <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <ellipse cx="14" cy="10" rx="10" ry="5" stroke="#00A27F"
@@ -130,16 +130,18 @@
                                 d="M24 31C24 31 24 35.2386 24 38C24 40.7614 28.4772 43 34 43C39.5228 43 44 40.7614 44 38C44 36.3644 44 31 44 31"
                                 stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                         </svg> <span data-i18n="financials">Financials</span></a></li>
-                <li><a href="{{ route('employee.index') }}">
-                        <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F"
-                                stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F"
-                                stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F"
-                                stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg> <span data-i18n="employee">Employee</span></a></li>
+                @if ($user)
+                    <li><a href="{{ route('employee.index') }}">
+                            <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F"
+                                    stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg> <span data-i18n="employee">Employee</span></a></li>
+                @endif
             </ul>
 
             <ul class="menu bottom-menu">
@@ -157,7 +159,7 @@
                             <path d="M27 34L24 37L21 34" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg> <span data-i18n="support_service">Support service</span></a></li>
-                <li><a href="settings.html">
+                <li><a href="{{ route('settings') }}">
                         <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
