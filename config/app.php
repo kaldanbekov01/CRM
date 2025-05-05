@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://your-domain.onrender.com'),
+    'url' => env('APP_URL', 'https://smartkasip-laravel.onrender.com'),
 
     /*
     |--------------------------------------------------------------------------
