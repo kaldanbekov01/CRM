@@ -30,9 +30,6 @@ RUN chown -R www-data:www-data /var/www && chmod -R 755 /var/www
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# ✅ Install Node.js dependencies & build assets with Vite
-RUN npm install && npm run build
-
 # Laravel config cache and migrate at runtime (using Railway-injected .env)
 CMD php artisan config:cache && \
     php artisan migrate --force && \
