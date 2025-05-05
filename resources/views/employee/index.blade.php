@@ -1,95 +1,100 @@
 @extends('layouts.app')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('../css/employees.css') }}">
+@endpush
 @section('content')
-    <div style="margin-left: 300px; margin-top: 100px;">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1 class="mb-0">All Employees</h1>
-            <form method="GET" action="{{ route('employee.index') }}" class="d-flex" style="max-width: 400px;">
-                <input type="text" name="search" value="{{ request('search') }}" class="form-control me-2"
-                    placeholder="Search by email or username">
-                <button type="submit" class="btn btn-outline-success">Search</button>
-            </form>
+    <header>
+        <h1><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+            </svg> Employees </h1>
+        <div class="header-right">
         </div>
-        <button type="button" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
-            ➕ Add New Employee
-        </button>
+    </header>
 
-        @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
+    <div class="main-content">
+        <div class="employee-actions">
+            <div class="search-bar">
+                <form method="GET" action="{{ route('employee.index') }}" class="d-flex" style="max-width: 400px;">
+                    <input type="text" name="search" value="{{ request('search') }}" data-i18n="search"
+                        placeholder="Search" />
+                    <button type="submit">
+                        <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 38C30.3888 38 38 30.3888 38 21C38 11.6112 30.3888 4 21 4C11.6112 4 4 11.6112 4 21C4 30.3888 11.6112 38 21 38Z"
+                                fill="none" stroke="white" stroke-width="4" stroke-linejoin="round" />
+                            <path
+                                d="M26.657 14.3431C25.2093 12.8954 23.2093 12 21.0001 12C18.791 12 16.791 12.8954 15.3433 14.3431"
+                                stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M33.2216 33.2217L41.7069 41.707" stroke="white" stroke-width="4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+            <button class="add-employee">+ <span data-i18n="add_employee">Add Employee</span></button>
+        </div>
 
-        <table class="table table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>User ID</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($employees as $employee)
-                    <tr>
-                        <td>{{ $employee->id }}</td>
-                        <td>{{ $employee->email }}</td>
-                        <td>{{ $employee->username }}</td>
-                        <td>{{ $employee->user_id }}</td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="3">No employees found.</td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-        <div class="d-flex justify-content-center mt-4">
-            <div style="font-size: 13px;">
-                {{ $employees->appends(request()->query())->links() }}
+        <div class="employee-content">
+            <div class="employee-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-i18n="id">ID</th>
+                            <th data-i18n="email">Email</th>
+                            <th data-i18n="username">Username</th>
+                            <th data-i18n="position">User ID</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    @forelse ($employees as $employee)
+                        <tr>
+                            <td>{{ $employee->id }}</td>
+                            <td>{{ $employee->email }}</td>
+                            <td>{{ $employee->username }}</td>
+                            <td>{{ $employee->user_id }}</td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3">No employees found.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center mt-4">
+                <div style="font-size: 13px;">
+                    {{ $employees->appends(request()->query())->links() }}
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="employeeModal" class="modal-overlay">
+            <div class="modal">
+                <h2 data-i18n="add_employee">Add Employee</h2>
+                <form action="{{ route('employee.store') }}" method="POST" class="modal-content">
+                    @csrf
+                    <label for="email" data-i18n="work_email">Username:</label>
+                    <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
+    
+                    <label for="email" data-i18n="work_email">Email:</label>
+                    <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+    
+                    <label for="email" data-i18n="work_email">Password:</label>
+                    <input type="password" name="password" class="form-control" required>
+                   
+                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+    
+                    <div class="modal-buttons">
+                        <button type="submit" class="btn btn-success">Add Employee</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <form action="{{ route('employee.store') }}" method="POST" class="modal-content">
-                @csrf
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addEmployeeModalLabel">Add New Employee</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+   
 
-                    <div class="mb-3">
-                        <label>Username:</label>
-                        <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Email:</label>
-                        <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label>Password:</label>
-                        <input type="password" name="password" class="form-control" required>
-                    </div>
-
-                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Add Employee</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <script src="../js/employees.js"></script>
+    <script src="../js/lang.js"></script>
 
 @endsection

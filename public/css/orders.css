@@ -40,10 +40,10 @@ a {
 }
 
 .main-content {
-    margin-left: 258px; 
+    margin-left: 330px; 
     padding: 100px 40px 30px; 
     background-color: white;
-    width: calc(100vw - 330px);
+    width: calc(100vw - 280px);
     height: 100vh;
     overflow-y: auto;
 }
