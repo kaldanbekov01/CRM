@@ -58,6 +58,6 @@
         </div>
     </div>
 
-    <script src="{{ asset('frontend/js/signup_info1.js') }}"></script>
+    <script src="('frontend/js/signup_info1.js')"></script>
 </body>
 </html>

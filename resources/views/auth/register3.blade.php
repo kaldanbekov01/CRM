@@ -149,7 +149,7 @@
     <title>SmartKasip - Signup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('frontend/images/logotip.jpeg') }}" type="image/jpeg">
-    <link rel="stylesheet" href="{{ asset('frontend/css/signup.css') }}">
+    <link rel="stylesheet" href="('frontend/css/signup.css')">
 </head>
 <body>
 <div class="container">
@@ -219,6 +219,6 @@
     </div>
 </div>
 
-<script src="{{ asset('../js/signup.js') }}"></script>
+<script src="('../js/signup.js')"></script>
 </body>
 </html>
