@@ -58,7 +58,7 @@
                             <th data-i18n="cost_price">Bar Code</th>
                             <th data-i18n="stock_quantity">Stock Quantity</th>
                             <th data-i18n="supplier_id">Supplier ID</th>
-                            @if($user)<th data-i18n="wholesale_price">WholeSale Price</th>@endif
+                            @if($user)<th data-i18n="cost_price">WholeSale Price</th>@endif
                             <th data-i18n="selling_price">Selling Price</th>
                             <th data-i18n="category">Category</th>
                         </tr>
@@ -71,8 +71,8 @@
                                 <td>{{ $product->barcode }}</td>
                                 <td>{{ $product->stock_quantity }}</td>
                                 <td>{{ $product->supplier->company_name ?? '—' }}</td>
-                                @if($user)<td>{{ $product->wholesale_price }} ₸</td>@endif
-                                <td>{{ $product->retail_price }} ₸</td>
+                                @if($user)<td>{{ $product->wholesale_price }}₸</td>@endif
+                                <td>{{ $product->retail_price }}₸</td>
                                 <td>{{ $product->category->name ?? '—' }}</td>
                             </tr>
                         @empty

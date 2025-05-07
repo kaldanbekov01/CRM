@@ -42,6 +42,7 @@ function showProducts(category) {
     productRow.appendChild(div);  // Append the product to the current row
   });
 
+  localStorage.setItem("lastCategory", category);
   gridArea.style.display = "flex";
   gridArea.style.flexWrap = "wrap"; // Enable wrapping of products into rows
 }
@@ -74,7 +75,13 @@ function toggleCartProduct(id, name, price, stock_quantity) {
 function renderCart() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const tbody = document.querySelector(".product-table tbody");
-  tbody.innerHTML = "";  // Clear the cart table before rendering
+  if (!tbody) {
+    console.error("Cart table body not found");
+    return;
+  }
+
+  tbody.innerHTML = "";
+
 
   let total = 0;
 
@@ -135,9 +142,23 @@ function updateQty(id, delta) {
 }
 
 // On page load, render the cart
-window.onload = () => {
+document.addEventListener("DOMContentLoaded", () => {
+  // Render cart if available
   renderCart();
-};
+
+  // Auto-show the last selected category
+  const savedCategory = localStorage.getItem("lastCategory");
+  const defaultCategory = Object.keys(productsByCategory)[0];
+
+  if (savedCategory && productsByCategory[savedCategory]) {
+    showProducts(savedCategory);
+  } else if (defaultCategory) {
+    showProducts(defaultCategory);
+  }
+});
+
+
+
 
 // Handle total on click event
 document.querySelector(".next-total").addEventListener("click", function () {

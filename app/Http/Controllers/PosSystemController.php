@@ -54,27 +54,41 @@ class PosSystemController extends Controller
      */
     public function search(Request $request)
     {
-        $user = Auth::guard('web')->user();
-
+        if (Auth::guard('employee')->check()) {
+            $user = Auth::guard('employee')->user();
+        } else {
+            $user = Auth::guard('web')->user();
+        }
+    
         $supplierIds = Supplier::where('user_id', $user->id)->pluck('id');
-
-        $products = Product::with(['category', 'supplier'])
-            ->whereIn('supplier_id', Supplier::where('user_id', auth()->id())->pluck('id'))
-            ->when($request->input('search'), function ($query, $search) {
-                $query->where('name', 'like', "%{$search}%");
-            })
-            ->paginate(10);
-
-        $categories = Product::whereIn('supplier_id', $supplierIds)
-            ->with('category')
-            ->get()
-            ->pluck('category')
-            ->unique('id');
-
-        return view('pos_system.select', data: compact('products', 'categories'));
-
+    
+        $query = Product::with('category')
+            ->whereIn('supplier_id', $supplierIds);
+    
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhereHas('category', function ($q2) use ($search) {
+                      $q2->where('name', 'like', "%{$search}%");
+                  });
+            });
+        }
+    
+        $products = $query->get();
+    
+        $categories = $products->pluck('category')
+            ->filter()
+            ->unique('id')
+            ->values();
+    
+        $productsByCategory = $products->groupBy(function ($product) {
+            return strtolower(trim(optional($product->category)->name ?? 'uncategorized'));
+        });
+    
+        return view('pos_system.select', compact('products', 'categories', 'productsByCategory'));
     }
-
+    
 
     public function create()
     {

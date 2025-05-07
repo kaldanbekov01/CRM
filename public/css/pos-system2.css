@@ -130,6 +130,37 @@ a {
     padding: 30px 0;
 }
 
+
+.search-bar {
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #E1F9F1;
+    color: #57A090;
+    border: none;
+}
+
+.search-bar input {
+    background-color: #E1F9F1;
+    padding: 23px 16px;
+    border: none;
+    outline: none;
+    width: 550px;
+    height: 40px;
+    font-size: 14px;
+    color: #57A090;
+}
+
+.search-bar button {
+    background-color: #00A27F;
+    color: white;
+    padding: 0 16px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
 .product-table button {
     font-size: 16px;
     padding: 6px 10px;

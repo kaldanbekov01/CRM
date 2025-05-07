@@ -7,7 +7,6 @@
     <title>POS system 2</title>
     <link rel="icon" href="../images/logotip.jpeg" type="image/jpeg" class="logotip">
     <link rel="stylesheet" href="../css/pos-system2.css">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -71,6 +70,7 @@
                     style="max-width: 400px;">
                     <input type="text" name="search" value="{{ request('search') }}" class="form-control me-2"
                         placeholder="Search by product name or category">
+
                     <button type="submit" class="btn btn-outline-success"><i class="fas fa-search"></i></button>
                 </form>
             </div>
@@ -79,7 +79,7 @@
                 @if ($user)
                     <button class="add-product-btn" onclick="window.location.href='{{ route('product.create') }}'">+ Add
                         a
-                    product</button>    
+                        product</button>
                 @endif
                 @foreach ($categories as $category)
                     <div class="category-card" onclick="showProducts('{{ strtolower(trim($category->name)) }}')">
@@ -92,16 +92,9 @@
             </div>
 
             <div class="products block-3" id="productContainer">
-                {{-- @foreach ($products as $product) --}}
-                {{-- <div class="product-card" data-category="{{ $product->category }}">
-                        <img src="{{ $product->description ?? '/images/default-product.png' }}" alt="{{ $product->name }}" class="product-image">
-                        <div class="product-name">{{ $product->name }}</div>
-                        <div class="product-price">{{ $product->retail_price }} ₸</div>
-                        <div class="product-stock_quantity">{{ $product->stock_quantity }}</div>
-                        <button class="add-product-btn" onclick="addProductToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->retail_price }})">Add</button>
-                    </div> --}}
-                {{-- @endforeach --}}
+                
             </div>
+
         </div>
     </div>
     <script src="../js/pos-system2.js"></script>
