@@ -1,11 +1,4 @@
-@font-face {
-    font-family: 'Gotham';
-    src: url('/fonts/gotham_medium.woff2') format('woff2'),
-         url('/fonts/gotham_medium.woff') format('woff'),
-         url('/fonts/gotham_medium.otf') format('opentype');
-    font-weight: 500;
-    font-style: normal;
-}
+
 
 
 body {
