@@ -17,17 +17,19 @@ class ProductController extends Controller
     {
         if (Auth::guard('employee')->check()) {
             $user = Auth::guard('employee')->user();
+            $userId = $user->user_id; // Employee's linked admin user
         } else {
             $user = Auth::guard('web')->user();
+            $userId = $user->id;
         }
-    
-        // Get the supplier IDs associated with the current user
-        $supplierIds = Supplier::where('user_id', $user->id)->pluck('id');
-    
-        // Get all categories
-        $categories = Category::where('user_id',$user->id)->get();
-    
-        // Query the products with category and supplier relationships
+
+        // All suppliers that belong to the admin user
+        $supplierIds = Supplier::where('user_id', $userId)->pluck('id');
+
+        // All categories belonging to the same user
+        $categories = Category::where('user_id', $userId)->get();
+
+        // Fetch products by supplier belonging to that user
         $products = Product::with(['category', 'supplier'])
             ->whereIn('supplier_id', $supplierIds)
             ->when($request->input('search'), function ($query, $search) {
@@ -36,12 +38,13 @@ class ProductController extends Controller
             ->when($request->input('category'), function ($query, $categoryId) {
                 $query->where('category_id', $categoryId);
             })
-            ->orderBy('category_id') // You can order them alphabetically by category name if desired
+            ->orderBy('category_id')
             ->get();
-    
+
         return view('product.index', compact('products', 'categories'));
     }
-    
+
+
 
 
 

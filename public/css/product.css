@@ -167,6 +167,15 @@ header h1 {
     border: none;
 }
 
+.sort-bar{
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #E1F9F1;
+    color: #57A090;
+    border: none;
+}
+
 .search-bar input {
     background-color: #E1F9F1;
     padding: 23px 16px;
@@ -176,6 +185,17 @@ header h1 {
     height: 40px;
     font-size: 14px;
     color: #57A090;
+}
+
+.sort-bar select {
+    background-color: #E1F9F1;
+    padding: 14px 16px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #57A090;
+    height: 40px;
+    width: 100%;
 }
 
 .search-bar button {

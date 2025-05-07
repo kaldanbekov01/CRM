@@ -73,20 +73,20 @@
                 <h2 data-i18n="add_employee">Add Employee</h2>
                 <form action="{{ route('employee.store') }}" method="POST" class="modal-content">
                     @csrf
-                    <label for="email" data-i18n="work_email">Username:</label>
+                    <label for="email" data-i18n="usernam">Username:</label>
                     <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
     
                     <label for="email" data-i18n="work_email">Email:</label>
                     <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
     
-                    <label for="email" data-i18n="work_email">Password:</label>
+                    <label for="email" data-i18n="password">Password:</label>
                     <input type="password" name="password" class="form-control" required>
                    
                     <input type="hidden" name="user_id" value="{{ Auth::id() }}">
     
                     <div class="modal-buttons">
                         <button type="submit" class="btn btn-success">Add Employee</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" id="cancelBtn" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
             </div>

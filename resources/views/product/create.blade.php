@@ -133,7 +133,7 @@
             </div>
             <div class="actions">
                 <button type="button" class="cancel"
-                    onclick="window.location.href='{{ route('posSystem.select') }}'">Cancel</button>
+                onclick="window.history.back();">Cancel</button>
                 <button type="submit" class="add" id="add-btn">Add</button>
             </div>
 

@@ -25,20 +25,23 @@ class PosSystemController extends Controller
     {
         if (Auth::guard('employee')->check()) {
             $user = Auth::guard('employee')->user();
+            $userId = $user->user_id; // Employee's linked admin user
         } else {
             $user = Auth::guard('web')->user();
+            $userId = $user->id;
         }
 
-        $supplierIds = Supplier::where('user_id', $user->id)->pluck('id');
+        // All suppliers that belong to the admin user
+        $supplierIds = Supplier::where('user_id', $userId)->pluck('id');
 
-        $products = Product::with('category')
+        // All categories belonging to the same user
+        $categories = Category::where('user_id', $userId)->get();
+
+        // Fetch products by supplier belonging to that user
+        $products = Product::with(['category', 'supplier'])
             ->whereIn('supplier_id', $supplierIds)
+            ->orderBy('category_id')
             ->get();
-
-        $categories = $products->pluck('category')
-            ->filter()
-            ->unique('id')
-            ->values();
 
         $productsByCategory = $products->groupBy(function ($product) {
             return strtolower(trim(optional($product->category)->name ?? 'uncategorized'));

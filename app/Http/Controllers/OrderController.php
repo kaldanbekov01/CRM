@@ -24,14 +24,15 @@ class OrderController extends Controller
                         ->paginate(10);
         } else {
             $user = Auth::guard('web')->user();
-    
-            // Показываем все заказы, связанные с клиентами, принадлежащими этому пользователю
-            $clientIds = Client::where('user_id', $user->id)->pluck('id');
-    
-            $orders = Order::with(['employee', 'client'])
-                        ->whereIn('client_id', $clientIds)
-                        ->orderByDesc('created_at')
-                        ->paginate(10);
+
+        // Get all employees of this user
+        $employeeIds = \App\Models\Employee::where('user_id', $user->id)->pluck('id');
+
+        // Get all orders of these employees
+        $orders = Order::with(['employee', 'client'])
+                    ->whereIn('employee_id', $employeeIds)
+                    ->orderByDesc('created_at')
+                    ->paginate(10);
         }
     
         return view('order.index', compact('orders'));

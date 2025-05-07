@@ -170,6 +170,10 @@ header h1 {
     border: none;
 }
 
+.search-bar form {
+    display: flex;
+}
+
 .search-bar input {
     background-color: #E1F9F1;
     padding: 23px 16px;
