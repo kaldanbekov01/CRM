@@ -61,6 +61,8 @@ function toggleCartProduct(id, name, price, stock_quantity) {
     // If it's already in the cart, increase the quantity
     if (cart[index].quantity < cart[index].stock_quantity) {
       cart[index].quantity += 1;
+    }else{
+      alert(`Product ${name}'s quantity is 0.`);
     }
   }
 
@@ -133,9 +135,6 @@ function updateQty(id, delta) {
     }
   } else {
     item.quantity += delta;
-  }
-  if (item.quantity <= 0) {
-    cart = cart.filter(p => p.id != id);  // Remove item if quantity is 0
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
