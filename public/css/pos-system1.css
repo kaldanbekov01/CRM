@@ -34,7 +34,7 @@ body {
     background-color: #007058;
     display: grid;
     grid-template-columns: 2fr 1fr;
-    width: calc(100vw - 330px);
+    width: calc(100vw - 280px);
     height: 100vh;
     overflow-y: auto;
     gap: 30px;

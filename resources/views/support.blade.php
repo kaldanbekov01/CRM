@@ -10,7 +10,8 @@
     @endphp
 
         <header>
-            <h1><i class="fas fa-shopping-cart"></i> Support Service </h1>
+            <h1><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="38" height="38" rx="3" fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 21L37 24L34 27" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 21L11 24L14 27" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 14L24 11L21 14" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 34L24 37L21 34" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> <span data-i18n="support_service">Support service</span></h1>
             <div class="header-right">
                 <i class="fas fa-envelope secure-icon"></i>
                 <div class="user-info">

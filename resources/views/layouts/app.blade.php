@@ -140,7 +140,7 @@
                                     stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F"
                                     stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg> <span data-i18n="employee">Employee</span></a></li>
+                            </svg> <span data-i18n="employees">Employee</span></a></li>
                 @endif
             </ul>
 

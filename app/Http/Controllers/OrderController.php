@@ -34,6 +34,8 @@ class OrderController extends Controller
                     ->orderByDesc('created_at')
                     ->paginate(10);
         }
+
+        
     
         return view('order.index', compact('orders'));
     }

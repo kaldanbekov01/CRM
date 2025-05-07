@@ -4,6 +4,14 @@
 @endpush
 
 @section('content')
+
+<header>
+    <h1><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20.5" cy="41.5" r="3.5" fill="#00A27F"/><circle cx="37.5" cy="41.5" r="3.5" fill="#00A27F"/><path d="M5 6L14 12L19 34H39L44 17H25" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 26L32.2727 26L41 26" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg> <span data-i18n="pos_system">POS system</span></h1>
+    <div class="header-right">
+    </div>
+</header>
+
 <div class="main-content">
     <div class="block-1">
         <div class="pos-screen">

@@ -23,7 +23,7 @@
             <h2 data-i18n="welcome_back">Welcome back!</h2>
             <form method="POST" class="login-form" id="loginForm" action="{{ route('multi.login') }}">
                 @csrf
-                <label for="email" data-i18n="phone_number">Email*</label>
+                <label for="email" data-i18n="email">Email*</label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid 
                 @enderror" name="email" placeholder="Enter email"
                     value="{{ old('email') }}" required autofocus>
