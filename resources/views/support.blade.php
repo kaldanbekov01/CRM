@@ -30,32 +30,33 @@
 
         <div class="main-content">
             <div class="help-box">
-                <h4>Need help?</h4>
-                <p> Please contact us at <a href="mailto:help.smartkasip@gmail.com">help.smartkasip@gmail.com</a></p>
+                <h4 data-i18n="need_help">Need a help?</h4>
+                   <p data-i18n="contact_us"> Please contact us at <a href="mailto:help.smartkasip@gmail.com">help.smartkasip@gmail.com</a>
+                </p>
             </div>
-
+        
             <div class="faq-item">
-                <div class="faq-question">How do I add a new product? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">
-                    Go to the “Clients” section → click the “Add client” button → Fill out the form and click “Save”.
+                <div class="faq-question" ><span data-i18n="faq_1_q">How do I add a new product? </span><svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 18L24 30L12 18" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="faq-answer" >
+                    <span data-i18n="faq_1_a">Go to the “Clients” section → click the “Add client” button → Fill out the form and click “Save”.</span>
                 </div>
             </div>
-
+        
             <div class="faq-item">
-                <div class="faq-question">I forgot the password. What to do? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">
-                    On the login page, click “Forgot your password?”. Enter your email address and we will send you a
-                    recovery link.
+                <div class="faq-question" ><span data-i18n="faq_2_q">I forgot the password. What to do?</span> <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 18L24 30L12 18" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="faq-answer" >
+                    <span data-i18n="faq_2_a">On the login page, click “Forgot your password?”. Enter your email address and we will send you a recovery link.</span>
                 </div>
             </div>
-
+        
             <div class="faq-item">
-                <div class="faq-question">How do I add a new cashier or employee? <i class="fas fa-chevron-down"></i></div>
-                <div class="faq-answer">
-                    Go to “Employee” → click “Add employee” → Fill out the form.
+                <div class="faq-question" ><span data-i18n="faq_3_q">How do I add a new cashier or employee?</span> <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M36 18L24 30L12 18" stroke="#333" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="faq-answer" >
+                    <span data-i18n="faq_3_a">Go to “Employee” → click “Add employee” → Fill out the form.</span>
                 </div>
             </div>
-        </div>
+            </div>
 
         <script src="{{ asset('js/support.js') }}"></script>
+        <script src="../js/lang.js"></script>
     @endsection

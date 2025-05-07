@@ -125,6 +125,7 @@
     </div>
 
     <script src="{{ asset('js/pos-system4.js') }}"></script>
+    <script src="../js/lang.js"></script>
 
 </body>
 </html>

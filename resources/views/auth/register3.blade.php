@@ -220,5 +220,6 @@
 </div>
 
 <script src="('../js/signup.js')"></script>
+<script src="../js/lang.js"></script>
 </body>
 </html>

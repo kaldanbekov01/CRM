@@ -25,4 +25,5 @@
         </div>
     </div>
 </div>
+<script src="../js/lang.js"></script>
 @endsection

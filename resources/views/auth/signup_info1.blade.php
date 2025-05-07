@@ -59,5 +59,6 @@
     </div>
 
     <script src="('frontend/js/signup_info1.js')"></script>
+    <script src="../js/lang.js"></script>
 </body>
 </html>

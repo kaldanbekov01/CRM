@@ -13,34 +13,36 @@
     <div class="container">
         <div class="left-panel">
             <a class="logo" href="{{ url('/') }}">Smart<span>Kasip</span></a>
-            <h1>Make your business easier with us</h1>
-            <p class="description">
+            <h1 data-i18n="email_page_title">Make your business easier with us</h1>
+            <p class="description" data-i18n="login_description">
                 SmartKasip is a modern CRM system designed to support and automate small businesses.
                 We help manage clients, orders, finances, and analytics in one user-friendly interface.
             </p>
         </div>
         <div class="right-panel">
-            <h2>Welcome back!</h2>
+            <h2 data-i18n="welcome_back">Welcome back!</h2>
             <form method="POST" class="login-form" id="loginForm" action="{{ route('multi.login') }}">
                 @csrf
-                <label for="email">Email*</label>
+                <label for="email" data-i18n="phone_number">Email*</label>
                 <input id="email" type="email" class="form-control @error('email') is-invalid 
                 @enderror" name="email" placeholder="Enter email"
                     value="{{ old('email') }}" required autofocus>
 
-                <label for="password">Password*</label>
+                <label for="password" data-i18n="password">Password*</label>
                 <input id="password" type="password" name="password" placeholder="Enter password" required>
+
+                <p id="errorMessage" data-i18n="error_message" style="color: red; display: none;">Email or password is incorrect.</p>
 
                 @if ($errors->has('email'))
                     <p style="color: red;">{{ $errors->first('email') }}</p>
                 @endif
 
-                <button type="submit" onclick="checkLogin()">Login</button>
+                <button type="submit" onclick="checkLogin()" data-i18n="login">Login</button>
 
                 <div class="links">
-                    <p>Don't you have an account? <a href="{{ route('register') }}">Register</a></p>
+                    <p><span data-i18n="no_account">Don't you have an account?</span> <a data-i18n="register" href="{{ route('register') }}"> Register</a></p>
                     @if (Route::has('password.request'))
-                        <p>You forgot password? <a href="{{ route('password.request') }}">Reset password</a></p>
+                        <p data-i18n="forgot_password">You forgot password? <a href="{{ route('password.request') }}">Reset password</a></p>
                     @endif
                 </div>
             </form>
@@ -90,6 +92,7 @@
             }
         }
     </script>
+    <script src="../js/lang.js"></script>
 </body>
 
 </html>

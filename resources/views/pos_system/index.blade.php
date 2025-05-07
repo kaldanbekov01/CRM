@@ -55,4 +55,5 @@
 </div>
 
 <script src="../js/pos-system1.js"></script>
+<script src="../js/lang.js"></script>
 @endsection

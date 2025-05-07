@@ -11,15 +11,15 @@
 
 <body>
     <header>
-        <div class="logo">Smart<span>Kasip</span></div>
+        <a class="logo" href="">Smart<span>Kasip</span></a>
         <nav>
             @if (Route::has('login'))
                 @auth
                     <a href="{{ url('/home') }}" class="login">Dashboard</a>
                 @else
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="getDemo">Get a demo</a>
-                        <a href="{{ route('login') }}" class="login">Login</a>
+                        <a href="{{ route('register') }}" data-i18n="get_demo" class="getDemo">Get a demo</a>
+                        <a href="{{ route('login') }}" class="login" data-i18n="login">Login</a>
                         <a href="#" id="languageSwitcher">EN ▼</a>
                         <ul id="language-options" class="dropdown-options">
                             <li onclick="selectLanguage('English')">English</li>

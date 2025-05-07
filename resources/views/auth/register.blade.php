@@ -11,25 +11,25 @@
 <div class="container">
     <div class="left-panel">
         <a class="logo" href="{{ url('/') }}">Smart<span>Kasip</span></a>
-        <h1>Make your business easier with us</h1>
-        <p class="description">
+        <h1 data-i18n="email_page_title">Make your business easier with us</h1>
+        <p class="description" data-i18n="email_page_description">
             SmartKasip is a modern CRM system designed to support and automate small businesses.
         </p>
     </div>
 
     <div class="right-panel">
-        <h2>Sign up</h2>
+        <h2 data-i18n="signup">Sign up</h2>
         <form method="POST" action="{{ route('register') }}" class="login-form" id="signupForm">
             @csrf
-            <label for="email">Work email*</label>
+            <label for="email" data-i18n="work_email_label">Work email*</label>
             <input type="email" id="email" name="email" value="{{ old('email') }}" required>
             @error('email') <span class="text-danger">{{ $message }}</span> @enderror
 
-            <label for="bin">BIN*</label>
+            <label for="bin" data-i18n="bin_label">BIN*</label>
             <input type="text" id="bin" name="bin" value="{{ old('bin') }}" maxlength="12" required>
             @error('bin') <span class="text-danger">{{ $message }}</span> @enderror
 
-            <label for="phone">Phone number*</label>
+            <label for="phone" data-i18n="phone_label">Phone number*</label>
             <div class="phone-input">
                 <select class="country-code" name="country_code">
                     <option value="+7" {{ old('country_code') == '+7' ? 'selected' : '' }}>+7</option>
@@ -40,14 +40,14 @@
             </div>
             @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
 
-            <label for="password">Password*</label>
+            <label for="password" data-i18n="password_label">Password*</label>
             <div class="password-wrapper">
                 <input type="password" id="password" name="password" required>
                 <img src="{{ asset('../images/signup/eye.jpeg') }}" class="toggle-password" onclick="togglePassword('password', this)" alt="Show password">
             </div>
             @error('password') <span class="text-danger">{{ $message }}</span> @enderror
 
-            <label for="password-confirm">Repeat the password*</label>
+            <label for="password-confirm" data-i18n="confirm_password_label">Repeat the password*</label>
             <div class="password-wrapper">
                 <input type="password" id="password-confirm" name="password_confirmation" required>
                 <img src="{{ asset('../images/signup/eye.jpeg') }}" class="toggle-password" onclick="togglePassword('password-confirm', this)" alt="Show password">
@@ -71,11 +71,12 @@
                 </p>
         
 
-            <button type="submit">Get started free</button>
+            <button type="submit" data-i18n="get_started">Get started free</button>
         </form>
     </div>
 </div>
 
 <script src="js/signup.js"></script>
+<script src="../js/lang.js"></script>
 </body>
 </html>

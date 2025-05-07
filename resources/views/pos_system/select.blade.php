@@ -121,6 +121,7 @@
             JSON_UNESCAPED_UNICODE,
         ) !!};
     </script>
+    <script src="../js/lang.js"></script>
 
 </body>
 
