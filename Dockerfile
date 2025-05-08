@@ -32,7 +32,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 # Laravel config cache and migrate at runtime (using Railway-injected .env)
 CMD php artisan config:cache && \
-    php artisan migrate --fresh && \
+    php artisan migrate --force && \
     php artisan serve --host=0.0.0.0 --port=8000
 
 # Expose port
