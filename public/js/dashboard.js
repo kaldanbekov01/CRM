@@ -1,11 +1,10 @@
-const ctxLine = document.getElementById('lineChart').getContext('2d');
-new Chart(ctxLine, {
+new Chart(document.getElementById('lineChart').getContext('2d'), {
     type: 'line',
     data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        labels: weeklyOrderLabels,
         datasets: [{
             label: 'Orders',
-            data: [1000, 2000, 1500, 3000, 2500, 2800, 4000],
+            data: weeklyOrderData,
             borderColor: '#20a090',
             tension: 0.3,
             fill: false
@@ -13,31 +12,27 @@ new Chart(ctxLine, {
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false,  
-        plugins: {
-            legend: { display: false }
-        },
-        scales: {
-            y: { beginAtZero: true }
-        }
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
     }
 });
 
-const ctxPie = document.getElementById('pieChart').getContext('2d');
-new Chart(ctxPie, {
+new Chart(document.getElementById('pieChart').getContext('2d'), {
     type: 'pie',
     data: {
-        labels: ['Category A', 'Category B', 'Category C'],
+        labels: categoryLabels,
         datasets: [{
-            data: [40, 30, 30],
-            backgroundColor: ['#008060', '#20a090', '#80c0a0']
+            data: categoryTotals,
+            backgroundColor: ['#008060', '#20a090', '#80c0a0', '#40b090', '#60d0b0']
         }]
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false  
+        maintainAspectRatio: false
     }
 });
+
 
 const ctxBar = document.getElementById('barChart').getContext('2d');
 new Chart(ctxBar, {

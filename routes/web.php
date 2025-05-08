@@ -57,6 +57,8 @@ Route::group(['middleware' => ['multiauth']], function () {
     Route::get('/product', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
     Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
     Route::post('/product', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
+    Route::post('/product/{product}',[App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
+    Route::delete('/product/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.destroy');
 
     Route::post('/category', [App\Http\Controllers\CategoryController::class, 'store'])->name('category.store');
 
@@ -73,10 +75,9 @@ Route::group(['middleware' => ['multiauth']], function () {
 
     Route::get('/financial', [App\Http\Controllers\FinancialController::class, 'index'])->name('financial.index');
 
-    Route::get('/client', function () {
-        return view('client.index');
-    })->name('client.index');    
-    
+    Route::get('/client', [App\Http\Controllers\ClientController::class, 'index'])->name('client.index');
+    Route::post('/client', [App\Http\Controllers\EmployeeController::class, 'store'])->name('clients.store');
+
     // Receipt route
     Route::get('/receipt', function () {
         return view('pos_system.checkout');

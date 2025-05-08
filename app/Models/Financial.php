@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Financial extends Model
 {
     protected $fillable = [
-        'name',
-        'phone',
+        'income',
+        'expense',
+        'date',
         'user_id',
     ];
 }

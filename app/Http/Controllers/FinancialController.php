@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Financial;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class FinancialController extends Controller
 {
@@ -11,7 +15,60 @@ class FinancialController extends Controller
      */
     public function index()
     {
-        return view('financial.index');
+        $user = Auth::guard('web')->user();
+        if (!$user) {
+            abort(403, 'Unauthorized');
+        }
+
+        $today = Carbon::today()->toDateString();
+
+        // Get all products of the user (via suppliers)
+        $products = Product::whereIn('supplier_id', function ($query) use ($user) {
+            $query->select('id')
+                ->from('suppliers')
+                ->where('user_id', $user->id);
+        })->get();
+
+        $income = $products->sum(function ($product) {
+            return $product->stock_quantity * ($product->retail_price - $product->wholesale_price);
+        });
+
+        $expense = $products->sum(function ($product) {
+            return $product->stock_quantity * $product->wholesale_price;
+        });
+
+        // Create or update financial record for today
+        $financial = Financial::firstOrNew(
+            ['user_id' => $user->id, 'date' => $today],
+            ['income' => 0, 'expense' => 0]
+        );
+
+        $financial->income = $income + $expense;
+        $financial->expense = $expense;
+        $financial->save();
+        $financials = Financial::orderBy('date')->get();
+
+        // Group by month
+        $monthlyIncome = [];
+        $monthlyExpenses = [];
+        $monthlySavings = [];
+
+        foreach (range(1, 12) as $month) {
+            $start = now()->startOfYear()->addMonths($month - 1);
+            $end = now()->startOfYear()->addMonths($month)->subDay();
+        
+            $monthly = $financials->whereBetween('date', [$start, $end]);
+        
+            $income = $monthly->sum('income');
+            $expenses = $monthly->sum('expense');
+        
+            $monthlyIncome[] = $income;
+            $monthlyExpenses[] = $expenses;
+            $monthlySavings[] = $income - $expenses;
+        }
+        
+
+        return view('financial.index', compact('financials', 'monthlyIncome', 'monthlyExpenses', 'monthlySavings'));
     }
 
     /**

@@ -42,7 +42,6 @@
                             <th data-i18n="id">ID</th>
                             <th data-i18n="email">Email</th>
                             <th data-i18n="username">Username</th>
-                            <th data-i18n="position">User ID</th>
                         </tr>
                     </thead>
                 <tbody>
@@ -51,7 +50,6 @@
                             <td>{{ $employee->id }}</td>
                             <td>{{ $employee->email }}</td>
                             <td>{{ $employee->username }}</td>
-                            <td>{{ $employee->user_id }}</td>
                         </tr>
                     @empty
                         <tr>
@@ -72,7 +70,7 @@
                 <h2 data-i18n="add_employee">Add Employee</h2>
                 <form action="{{ route('employee.store') }}" method="POST" class="modal-content">
                     @csrf
-                    <label for="email" data-i18n="usernam">Username:</label>
+                    <label for="username" data-i18n="username">Username:</label>
                     <input type="text" name="username" class="form-control" value="{{ old('username') }}" required>
     
                     <label for="email" data-i18n="work_email">Email:</label>

@@ -111,14 +111,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validated = $request->validate([
+            'stock_quantity' => 'required|integer',
+        ]);
+
+        if ($validated['stock_quantity'] >= -($product->stock_quantity)) {
+            $product->stock_quantity += $validated['stock_quantity'];
+            $product->save();
+
+
+            return redirect()->route('product.index')->with('success', 'Stock quantity updated successfully!');
+        }
+        else return response()->json(['success' => false, 'message' => 'Less than stock_quantity'], 400);
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect()->route('product.index')->with('success', 'Product deleted successfully!');
     }
+
+
 }

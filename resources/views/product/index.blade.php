@@ -11,10 +11,17 @@
     @endphp
 
     <header>
-        <h1><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.68209 23.5639C4.32813 21.7145 5.74562 20 7.62861 20H40.3714C42.2544 20 43.6719 21.7145 43.3179 23.5639L40.2557 39.5639C39.9851 40.9777 38.7486 42 37.3092 42H10.6908C9.25141 42 8.01487 40.9777 7.74429 39.5639L4.68209 23.5639Z" fill="none" stroke="#00A27F" stroke-width="4" stroke-linejoin="round"/><path d="M24 6L15 20H33L24 6Z" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="31" r="3" fill="none" stroke="#00A27F" stroke-width="4"/>
-        </svg> <span data-i18n="products">Products</span></h>
-        <div class="header-right">
-        </div>
+        <h1><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M4.68209 23.5639C4.32813 21.7145 5.74562 20 7.62861 20H40.3714C42.2544 20 43.6719 21.7145 43.3179 23.5639L40.2557 39.5639C39.9851 40.9777 38.7486 42 37.3092 42H10.6908C9.25141 42 8.01487 40.9777 7.74429 39.5639L4.68209 23.5639Z"
+                    fill="none" stroke="#00A27F" stroke-width="4" stroke-linejoin="round" />
+                <path d="M24 6L15 20H33L24 6Z" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <circle cx="24" cy="31" r="3" fill="none" stroke="#00A27F" stroke-width="4" />
+            </svg> <span data-i18n="products">Products</span></h>
+            <div class="header-right">
+            </div>
     </header>
 
     <div class="main-content">
@@ -90,7 +97,80 @@
                                 @endif
                                 <td>{{ $product->retail_price }}₸</td>
                                 <td>{{ $product->category->name ?? '—' }}</td>
+                                @if ($user)
+                                    <td>
+                                        <button class="edit-btn"
+                                            onclick="openEditModal({{ $product->id }}, {{ $product->stock_quantity }})">
+                                            ✏️
+                                        </button>
+
+                                        @if ($product->stock_quantity == 0)
+                                            <button class="delete-btn" data-product-id="{{ $product->id }}"
+                                                data-product-name="{{ $product->name }}" onclick="openDeleteModal(this)">
+                                                🗑️
+                                            </button>
+                                        @endif
+                                    </td>
+                                @endif
+
                             </tr>
+
+                            <!-- DELETE MODAL -->
+                            <div id="deleteModal" class="modal-overlay" style="display: none;">
+                                <div class="modal">
+                                    <p id="deleteMessage">Are you sure you want to delete this product?</p>
+                                    <form id="deleteForm" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-buttons"
+                                            style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+                                            <button type="delete" class="btn btn-danger" data-i18n="delete">Delete</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                onclick="closeDeleteModal()">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div id="productModal" class="modal-overlay" style="display: none;">
+                                <div class="modal">
+                                    <h2 data-i18n="edit_product">Edit Product</h2>
+                                    <form id="editProductForm" method="POST">
+                                        @csrf
+                                        <div style="margin-bottom: 20px;">
+                                            <label for="name" data-i18n="">Product name:</label>
+                                            <input type="text" name="name" class="form-control"
+                                                value="{{ old('name') }}" placeholder="{{ $product->name }}" disabled>
+                                        </div>
+                                        <div style="margin-bottom: 20px;">
+                                            <label for="barcode" data-i18n="">Barcode:</label>
+                                            <input type="barcode" name="barcode" class="form-control"
+                                                value="{{ old('barcode') }}" placeholder="{{ $product->barcode }}"
+                                                disabled>
+                                        </div>
+                                        <div style="margin-bottom: 20px;">
+                                            <label for="stock_quantity" data-i18n="stock_quantity">Stock
+                                                Quantity::</label>
+                                            <input type="text" name="stock_quantity"
+                                                placeholder="{{ $product->stock_quantity }}" class="form-control"
+                                                disabled>
+                                        </div>
+                                        <div style="margin-bottom: 20px;">
+                                            <label for="stock_quantity" data-i18n="">Add count:</label>
+                                            <input type="number" name="stock_quantity" id="editQuantity"
+                                                class="form-control" required>
+                                        </div>
+                                        <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+
+                                        <div class="modal-buttons"
+                                            style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+                                            <button type="submit" class="btn btn-success">Update Product</button>
+                                            <button type="button" id="cancelBtn" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         @empty
                             <tr>
                                 <td colspan="8" class="text-center">No products found.</td>
@@ -100,6 +180,10 @@
                 </table>
             </div>
         </div>
+
+
     </div>
+
+    <script src="../js/product.js"></script>
     <script src="../js/lang.js"></script>
 @endsection

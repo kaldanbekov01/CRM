@@ -6,18 +6,18 @@
 @section('content')
 <div class="main-content">
     <div class="stats">
-        <div class="stat-card">266 <br><span data-i18n="total_orders">Total Orders</span></div>
-        <div class="stat-card">1 800 000 KZT<br><span data-i18n="total_sales">Total Sales</span></div>
-        <div class="stat-card">5 <br><span data-i18n="total_employees">Total Employees</span></div>
+        <div class="stat-card">{{ number_format($totalOrders) }}<br><span data-i18n="total_orders">Total Orders</span></div>
+        <div class="stat-card">{{ number_format($totalSales, 0, '', ',') }} KZT<br><span data-i18n="total_sales">Total Sales</span></div>
+        <div class="stat-card">{{ $employeeCount }} <br><span data-i18n="total_employees">Total Employees</span></div>
     </div>
 
     <div class="charts">
         <div class="chart-card">
             <h3><span data-i18n="top_selling_products">Top Selling products</span> <span class="subtitle" data-i18n="on_this_week">on this week</span></h3>
             <ul>
-                <li><span class="dot"></span>Nike Air <span>69</span></li>
-                <li><span class="dot"></span>New Balance 550 <span>55</span></li>
-                <li><span class="dot"></span>UGG women’s Tazz <span>38</span></li>
+                @foreach ($topProducts as $product)
+                    <li><span class="dot"></span>{{ $product->name }} <span>{{ $product->total }}</span></li>
+                @endforeach
             </ul>
         </div>
 
@@ -36,5 +36,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    const weeklyOrderData = @json($weeklyOrders->values());
+    const weeklyOrderLabels = @json($weeklyOrders->keys());
+
+    const categoryLabels = @json($salesByCategory->pluck('category'));
+    const categoryTotals = @json($salesByCategory->pluck('total'));
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/dashboard.js"></script>
 <script src="../js/lang.js"></script>
 @endsection
