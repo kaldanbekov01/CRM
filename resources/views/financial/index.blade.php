@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @push('styles')
-    <link rel="stylesheet" href="../css/financials.css">
+<link rel="stylesheet" href="{{ asset('../css/financials.css') }}">
 @endpush
 
 @section('content')
@@ -74,6 +74,60 @@
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/js/financials.js"></script>
+
 <script src="/js/lang.js"></script>
+<script>
+  const ctxIncomeExpense = document.getElementById('incomeExpenseChart').getContext('2d');
+new Chart(ctxIncomeExpense, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    datasets: [
+      {
+        label: 'Income',
+        data: incomeData,
+        borderColor: '#007058',
+        fill: false,
+        tension: 0.3
+      },
+      {
+        label: 'Expenses',
+        data: expenseData,
+        borderColor: '#99CFCB',
+        fill: false,
+        tension: 0.3
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: true } },
+    scales: { y: { beginAtZero: false } }
+  }
+});
+
+const ctxNetSavings = document.getElementById('netSavingsChart').getContext('2d');
+new Chart(ctxNetSavings, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    datasets: [{
+      label: 'Net savings',
+      data: savingsData,
+      borderColor: '#20a090',
+      fill: false,
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: false } }
+  }
+});
+
+</script>
 @endsection
+
