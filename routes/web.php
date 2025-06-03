@@ -4,12 +4,22 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\MultiLoginController;
+use App\Http\Controllers\AIChatController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
 
 Route::get('/login', [MultiLoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [MultiLoginController::class, 'login'])->name('multi.login');
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
 
 Route::post('/logout', function () {
     if (Auth::guard('web')->check()) {
@@ -42,22 +52,26 @@ Route::group(['middleware' => ['multiauth']], function () {
     Route::group(['middleware' => 'registration_completed'], function () {
         Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
         Route::get('/support', action: [App\Http\Controllers\HomeController::class, 'support'])->name('support');
+        // Receipt route
+        Route::get('/profile', function () {
+            return view('profile');
+        })->name('profile');
 
     });
     Route::get('/signup/info', [RegisterController::class, 'step2Form'])->name('register.step2.form');
     Route::post('/signup/info', [RegisterController::class, 'completeProfile'])->name('register.complete');
-    
+
 
     // Employee routes
     Route::get('/employee', [App\Http\Controllers\EmployeeController::class, 'index'])->name('employee.index');
     Route::get('/employee/create', [App\Http\Controllers\EmployeeController::class, 'create'])->name('employee.create');
     Route::post('/employee', [App\Http\Controllers\EmployeeController::class, 'store'])->name('employee.store');
 
-        // Employee routes
+    // Employee routes
     Route::get('/product', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
     Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
     Route::post('/product', [App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
-    Route::post('/product/{product}',[App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
+    Route::post('/product/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
     Route::delete('/product/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.destroy');
 
     Route::post('/category', [App\Http\Controllers\CategoryController::class, 'store'])->name('category.store');
@@ -87,6 +101,8 @@ Route::group(['middleware' => ['multiauth']], function () {
         return view('settings');
     })->name('settings');
 });
+
+Route::post('/ai-chat', [AIChatController::class, 'chat'])->name('ai.chat');
 
 
 

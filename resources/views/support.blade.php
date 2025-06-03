@@ -56,8 +56,44 @@
                     <span data-i18n="faq_3_a">Go to “Employee” → click “Add employee” → Fill out the form.</span>
                 </div>
             </div>
+            
+
+            <div class="ai-chat-box">
+                <h4 class="chat-title">🤖 Ask SmartKasip AI</h4>
+                <form id="chatForm">
+                    <textarea id="userMessage" class="form-control ai-textarea" rows="4" placeholder="Type your question..."></textarea>
+                    <button type="submit" class="aiBtn">Ask AI</button>
+                </form>
+                <div id="aiResponse" class="ai-response-box"></div>
             </div>
+            
+        </div>
+            
 
         <script src="{{ asset('js/support.js') }}"></script>
         <script src="../js/lang.js"></script>
+        <script>
+            document.getElementById('chatForm').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                const message = document.getElementById('userMessage').value;
+                const responseBox = document.getElementById('aiResponse');
+                responseBox.innerHTML = 'Thinking...';
+        
+                try {
+                    const response = await fetch("{{ route('ai.chat') }}", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({ message: message })
+                    });
+                    const data = await response.json();
+                    responseBox.innerHTML = data.reply;
+                } catch (err) {
+                    responseBox.innerHTML = "Error: " + err.message;
+                }
+            });
+        </script>
+        
     @endsection

@@ -16,7 +16,7 @@
     <div class="block-1">
         <div class="pos-screen">
             <div class="pos-header">
-                <span>Смена</span>
+                <span></span>
             </div>
             <div id="pos-display" class="pos-display">0</div>
         </div>

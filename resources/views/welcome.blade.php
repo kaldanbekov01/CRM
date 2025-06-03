@@ -35,7 +35,7 @@
     <section class="hero">
         <h1 ><span data-i18n="hero_title1">Your personal business assistant a</span> <span class="highlight">CRM</span> <span data-i18n="hero_title2">that thinks for you</span></h1>
         <p data-i18n="hero_subtitle"> Accept payments and issue receipts without buying a cash register immediately after registering with SMARTKASIP</p>
-        <button class="cta-button" data-i18n="hero_button">Get started for free</button>
+        <button onclick="window.location='{{ route('register') }}'" class="cta-button" data-i18n="hero_button">Get started for free</button>
     </section>
     
     <section class="business-section">

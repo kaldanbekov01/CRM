@@ -41,9 +41,9 @@
 
                 <div class="links">
                     <p><span data-i18n="no_account">Don't you have an account?</span> <a data-i18n="register" href="{{ route('register') }}"> Register</a></p>
-                    @if (Route::has('password.request'))
-                        <p data-i18n="forgot_password">You forgot password? <a href="{{ route('password.request') }}">Reset password</a></p>
-                    @endif
+                    
+                    <p><span data-i18n="forgot_password">You forgot password?</span> <a href="{{ route('password.request') }}">Reset password</a></p>
+                
                 </div>
             </form>
         </div>
