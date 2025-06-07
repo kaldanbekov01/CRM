@@ -32,7 +32,7 @@ class EmployeeController extends Controller
         }
 
         // Paginate the final query (important!)
-        $employees = $query->paginate(2);
+        $employees = $query->get();
 
         return view('employee.index', compact('employees'));
     }

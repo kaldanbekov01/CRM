@@ -47,7 +47,7 @@
                 <tbody>
                     @forelse ($employees as $employee)
                         <tr>
-                            <td>{{ $employee->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $employee->email }}</td>
                             <td>{{ $employee->username }}</td>
                         </tr>
@@ -58,11 +58,11 @@
                     @endforelse
                 </tbody>
             </table>
-            <div class="d-flex justify-content-center mt-4">
+            {{-- <div class="d-flex justify-content-center mt-4">
                 <div style="font-size: 13px;">
                     {{ $employees->appends(request()->query())->links() }}
                 </div>
-            </div>
+            </div> --}}
         </div>
         <!-- Modal -->
         <div id="employeeModal" class="modal-overlay">
