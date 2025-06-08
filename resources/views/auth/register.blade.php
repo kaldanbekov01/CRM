@@ -62,7 +62,7 @@
                     <li id="rule-special" data-i18n="rule_special">✔ One special character</li>
                     <li id="rule-length" data-i18n="rule_length">✔ 8 characters minimum</li>
                 </ul>
-                <p style="font-size: 13px; color: #777;">
+                <p class="links" style="font-size: 13px; color: #777;">
                     <span data-i18n="terms_note">By registering for an account, you are consenting to our </span>
                     <a href="#" style="color:#026451; text-decoration: none;" ><span data-i18n="terms_service"> Terms of Service and</span></a>  
                     <a href="#" style="color:#026451; text-decoration: none;" ><span data-i18n="privacy">Global Privacy Statement</span></a>.<br>

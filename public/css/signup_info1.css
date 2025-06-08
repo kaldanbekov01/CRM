@@ -185,3 +185,86 @@ input {
 .next-button:hover {
     background-color: #005c4a;
 }
+
+@media (max-width: 425px){
+
+    /* Left-side */
+    .left-panel {
+        background-color: #f6f9f8; 
+        width: 100%;
+        align-items: center; 
+        padding: 40px;
+        height: 10%; 
+    }
+    
+    .left-panel h1{
+        display: none;
+    }
+    
+    .left-panel p {
+        display: none;
+    }
+    
+    .logo {
+        font-size: 30px;
+    }
+    
+    .logo span {
+        color: #007058;
+    }
+    
+    /* Right-side form */
+    .right-panel {
+        margin-left: 0%;
+        width: 100%;
+        margin-top: 20%;
+    }
+    
+    .progress-container {
+        padding: 40px 30px;
+    }
+    
+    .block1 p{
+        font-size: 20px;
+    }
+    
+    /* Forma */
+    .forma {
+        padding: 0% 10%;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    .subtext {
+        font-size: 12px;
+    }
+    
+    .signup-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .input-row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .input-group {
+        font-size: 12px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    label {
+        font-size: 12px;
+    }
+    
+    /* Next button */
+    .next-button {
+        width: 45%;
+    }
+    }
