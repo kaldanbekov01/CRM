@@ -488,6 +488,10 @@ footer {
   color: #005241;
 }
 
+.carousel-btn{
+  display: none;
+}
+
 @media (max-width: 425px) {
 
   header nav {

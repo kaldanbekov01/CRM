@@ -38,10 +38,10 @@ const ctxBar = document.getElementById('barChart').getContext('2d');
 new Chart(ctxBar, {
     type: 'bar',
     data: {
-        labels: ['Product A', 'Product B', 'Product C', 'Product D'],
+        labels: topProducts,
         datasets: [{
             label: 'Sales',
-            data: [40, 70, 20, 60],
+            data: topProductsQuantity,
             backgroundColor: ['#008060', '#20a090', '#80c0a0', '#40b090']
         }]
     },

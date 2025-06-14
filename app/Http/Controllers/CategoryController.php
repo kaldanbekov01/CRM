@@ -30,15 +30,20 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            Rule::unique('categories')->where(function ($query) {
-                return $query->where('user_id', auth()->id());
-            }),
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('categories')->where(fn ($query) => $query->where('user_id', auth()->id())),
+            ],
+        ], [
+            'name.unique' => 'Такая категория уже существует.',
         ]);
+        
 
         Category::create([
             'name' => $validated['name'],
-            'user_id' => auth()->id(), // сохраняем ID текущего пользователя
+            'user_id' => auth()->id(),
         ]);
 
         return redirect()->route('product.create')->with('success', 'Category added successfully!');
