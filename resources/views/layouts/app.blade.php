@@ -56,7 +56,7 @@
                                 d="M38 42C40.2091 42 42 40.2091 42 38C42 35.7909 40.2091 34 38 34C35.7909 34 34 35.7909 34 38C34 40.2091 35.7909 42 38 42Z"
                                 fill="#00A27F" />
                         </svg> <span data-i18n="dashboard">Dashboard</span></a></li>
-                <li><a href="{{ route('posSystem.index') }}">
+                <li class="hide-on-mobile"><a href="{{ route('posSystem.index') }}">
                         <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <circle cx="20.5" cy="41.5" r="3.5" fill="#00A27F" />
@@ -185,87 +185,97 @@
 
 
     <header>
-        <h1><a href="/home">
-                <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+        <div class="header-left">
+            <div class="burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <h1><a href="/home">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M24 14C26.2091 14 28 12.2091 28 10C28 7.79086 26.2091 6 24 6C21.7909 6 20 7.79086 20 10C20 12.2091 21.7909 14 24 14Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M38 14C40.2091 14 42 12.2091 42 10C42 7.79086 40.2091 6 38 6C35.7909 6 34 7.79086 34 10C34 12.2091 35.7909 14 38 14Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M10 28C12.2091 28 14 26.2091 14 24C14 21.7909 12.2091 20 10 20C7.79086 20 6 21.7909 6 24C6 26.2091 7.79086 28 10 28Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20C21.7909 20 20 21.7909 20 24C20 26.2091 21.7909 28 24 28Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M38 28C40.2091 28 42 26.2091 42 24C42 21.7909 40.2091 20 38 20C35.7909 20 34 21.7909 34 24C34 26.2091 35.7909 28 38 28Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M10 42C12.2091 42 14 40.2091 14 38C14 35.7909 12.2091 34 10 34C7.79086 34 6 35.7909 6 38C6 40.2091 7.79086 42 10 42Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M24 42C26.2091 42 28 40.2091 28 38C28 35.7909 26.2091 34 24 34C21.7909 34 20 35.7909 20 38C20 40.2091 21.7909 42 24 42Z"
+                            fill="#00A27F" />
+                        <path
+                            d="M38 42C40.2091 42 42 40.2091 42 38C42 35.7909 40.2091 34 38 34C35.7909 34 34 35.7909 34 38C34 40.2091 35.7909 42 38 42Z"
+                            fill="#00A27F" />
+                    </svg> <span data-i18n="dashboard">Dashboard</span></a>
+            </h1>
+            <div class="header-right">
+                <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M10 14C12.2091 14 14 12.2091 14 10C14 7.79086 12.2091 6 10 6C7.79086 6 6 7.79086 6 10C6 12.2091 7.79086 14 10 14Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M24 14C26.2091 14 28 12.2091 28 10C28 7.79086 26.2091 6 24 6C21.7909 6 20 7.79086 20 10C20 12.2091 21.7909 14 24 14Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M38 14C40.2091 14 42 12.2091 42 10C42 7.79086 40.2091 6 38 6C35.7909 6 34 7.79086 34 10C34 12.2091 35.7909 14 38 14Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M10 28C12.2091 28 14 26.2091 14 24C14 21.7909 12.2091 20 10 20C7.79086 20 6 21.7909 6 24C6 26.2091 7.79086 28 10 28Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M24 28C26.2091 28 28 26.2091 28 24C28 21.7909 26.2091 20 24 20C21.7909 20 20 21.7909 20 24C20 26.2091 21.7909 28 24 28Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M38 28C40.2091 28 42 26.2091 42 24C42 21.7909 40.2091 20 38 20C35.7909 20 34 21.7909 34 24C34 26.2091 35.7909 28 38 28Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M10 42C12.2091 42 14 40.2091 14 38C14 35.7909 12.2091 34 10 34C7.79086 34 6 35.7909 6 38C6 40.2091 7.79086 42 10 42Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M24 42C26.2091 42 28 40.2091 28 38C28 35.7909 26.2091 34 24 34C21.7909 34 20 35.7909 20 38C20 40.2091 21.7909 42 24 42Z"
-                        fill="#00A27F" />
-                    <path
-                        d="M38 42C40.2091 42 42 40.2091 42 38C42 35.7909 40.2091 34 38 34C35.7909 34 34 35.7909 34 38C34 40.2091 35.7909 42 38 42Z"
-                        fill="#00A27F" />
-                </svg> <span data-i18n="dashboard">Dashboard</span></a></h1>
-        <div class="header-right">
-            <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M44 24V9H24H4V24V39H24" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M30 30C30 29 35 27 35 27C35 27 40 29 40 30C40 38 35 40 35 40C35 40 30 38 30 30Z"
-                    fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M4 9L24 24L44 9" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
-            <div class="user-info">
-                <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F" stroke-width="4"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F"
-                        stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4"
-                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M44 24V9H24H4V24V39H24" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M30 30C30 29 35 27 35 27C35 27 40 29 40 30C40 38 35 40 35 40C35 40 30 38 30 30Z"
+                        fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M4 9L24 24L44 9" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
-                <i class="fas fa-user-circle user-icon"></i>
-                <div class="user-details">
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            @if ($user)
-                                <span class="user-name">{{ $user->firstName }} {{ $user->lastName }}</span>
-                                <span class="user-role">Admin</span>
-                            @elseif ($employee)
-                                <span class="user-name">{{ $employee->username }}</span>
-                                <span class="user-role">Employee</span>
-                            @endif
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item fw-bold text-center px-4 py-2" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
+                <div class="user-info">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F"
+                            stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F"
+                            stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <div class="user-details">
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                @if ($user)
+                                    <span class="user-name">{{ $user->firstName }} {{ $user->lastName }}</span>
+                                    <span class="user-role">Admin</span>
+                                @elseif ($employee)
+                                    <span class="user-name">{{ $employee->username }}</span>
+                                    <span class="user-role">Employee</span>
+                                @endif
                             </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item fw-bold text-center px-4 py-2" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
 
-                    </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+
+                        </li>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="overlay"></div>
     </header>
 
 

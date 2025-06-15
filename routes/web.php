@@ -90,7 +90,7 @@ Route::group(['middleware' => ['multiauth']], function () {
     Route::get('/financial', [App\Http\Controllers\FinancialController::class, 'index'])->name('financial.index');
 
     Route::get('/client', [App\Http\Controllers\ClientController::class, 'index'])->name('client.index');
-    Route::post('/client', [App\Http\Controllers\EmployeeController::class, 'store'])->name('clients.store');
+    Route::post('/client', [App\Http\Controllers\ClientController::class, 'store'])->name('client.store');
 
     // Receipt route
     Route::get('/receipt', function () {

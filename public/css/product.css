@@ -372,3 +372,185 @@ header h1 {
 .modal-buttons button[type="delete"]:hover {
     background-color: #f1083e;
 }
+
+/* Burger menu */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.burger div {
+  width: 20px;
+  height: 3px;
+  background-color: #00A27F;
+  margin: 2px 0;
+  transition: 0.4s;
+  border-radius: 5px;
+}
+
+@media (max-width: 425px){
+.burger {
+    display: flex;
+}
+
+.hide-on-mobile {
+    display: none !important;
+}
+
+.main-content {
+    margin-left: 0px; 
+    width: 100vw;
+    height: 100vh;
+    padding: 100px 20px 30px; 
+}
+
+/* Sidebar */
+.sidebar{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    padding: 35px;
+    background-color: #F0F4F3;
+    border-right: 1px solid #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    z-index: 1001;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+/* Darkening the background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Disabling scrolling when the sidebar is active */
+body.sidebar-open {
+    overflow: hidden;
+}
+
+.logo {
+    font-size: 30px;
+}
+
+.menu li {
+    padding: 12px 0;
+}
+
+/* Header */
+header {
+    left: 0px; 
+    width: 100vw;
+}
+
+header h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+h1 .icon {
+    display: none;
+}
+
+.header-left{
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.header-right .icon-bell{
+    display: none;
+}
+
+
+/* User Information */
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 8px 0px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.user-details{
+    display: none;
+}
+
+/* Main content  */
+.product-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+.search-bar {
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #E1F9F1;
+    color: #57A090;
+    border: none;
+}
+
+.search-bar input {
+    background-color: #E1F9F1;
+    padding: 17px 10px;
+    border: none;
+    outline: none;
+    width: 200px;
+    height: 30px;
+    font-size: 12px;
+    color: #57A090;
+}
+
+.search-bar button {
+    padding: 0 7px;
+    font-size: 2px;
+}
+
+.add-product {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 10px;
+}
+
+/* Product content */
+.product-content {
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.228);
+    gap: 25px;
+}
+
+.product-table table {
+    font-size: 10px;
+}
+
+.product-table th,
+.product-table td {
+    padding: 10px;
+}
+}

@@ -92,8 +92,8 @@
             <p class="modal-text" data-i18n="logout_confirmation">Are you sure you want<br>to logout?</p>
 
             <div class="modal-buttons">
-                <form method="POST" action="{{ route('logout') }}">
-                    <!-- @csrf -->
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
                     <button type="submit" class="yes-btn" data-i18n="yes">Yes</button>
                 </form>
                 <button type="button" onclick="closeLogoutModal()" class="no-btn" data-i18n="no">No</button>

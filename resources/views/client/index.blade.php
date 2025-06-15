@@ -6,7 +6,17 @@
 @section('title', 'Clients')
 
 @section('content')
+    @php
+        $user = Auth::guard('web')->user();
+        $employee = Auth::guard('employee')->check() ? Auth::guard('employee')->user() : null;
+    @endphp
     <header>
+        <div class="header-left">
+            <div class="burger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         <h1><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <circle cx="14" cy="29" r="5" fill="none" stroke="#00A27F" stroke-width="4"
@@ -23,8 +33,44 @@
                     stroke-linecap="round" stroke-linejoin="round" />
             </svg> <span data-i18n="clients">Clients</span></h1>
         <div class="header-right">
+            <svg width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M44 24V9H24H4V24V39H24" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M30 30C30 29 35 27 35 27C35 27 40 29 40 30C40 38 35 40 35 40C35 40 30 38 30 30Z" fill="none"
+                    stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M4 9L24 24L44 9" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            <div class="user-info">
+                <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F" stroke-width="4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F" stroke-width="4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <i class="fas fa-user-circle user-icon"></i>
+                <div class="user-details">
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            @if ($user)
+                                <span class="user-name">{{ $user->firstName }} {{ $user->lastName }}</span>
+                                <span class="user-role">Admin</span>
+                            @elseif ($employee)
+                                <span class="user-name">{{ $employee->username }}</span>
+                                <span class="user-role">Employee</span>
+                            @endif
+                        </a>
+                    </li>
+                </div>
+            </div>
+        </div>
         </div>
     </header>
+    <div class="overlay"></div>
 
     <div class="main-content">
         <div class="client-actions">
@@ -55,15 +101,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($clients as $client)
+                        @forelse ($clients as $client)
                             <tr>
-                                <td>{{ $client->id }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $client->name }}</td>
                                 <td>{{ $client->phone }}</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="3">No clients found.</td>
+                            </tr>
+                        @endforelse
                     </tbody>
-                    
+
                 </table>
             </div>
         </div>
@@ -73,20 +123,23 @@
     <div id="clientModal" class="modal-overlay">
         <div class="modal">
             <h2 data-i18n="modal_title_add_client">Add Client</h2>
-            <form action="{{ route('clients.store') }}" method="POST">
+            <form action="{{ route('client.store') }}" method="POST">
                 @csrf
                 <label for="name" data-i18n="name_label">Name</label>
                 <input type="text" id="name" name="name" placeholder="Client Name" required>
-            
+
                 <label for="phone" data-i18n="phone_label">Phone</label>
                 <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
-            
+
+                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+
+
                 <div class="modal-buttons">
                     <button type="button" id="cancelBtn" data-i18n="modal_cancel">Cancel</button>
                     <button type="submit" data-i18n="modal_add">Add</button>
                 </div>
             </form>
-            
+
         </div>
     </div>
     <script src="../js/clients.js"></script>
