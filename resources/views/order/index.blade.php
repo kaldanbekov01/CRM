@@ -110,7 +110,7 @@
                 <tbody>
                     @forelse($orders as $order)
                         <tr>
-                            <td>{{ $order['order_id'] }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ \Carbon\Carbon::parse($order['date'])->format('M d, Y') }}</td>
                             <td>
                                 <ul style="padding-left: 15px; margin: 0;">
