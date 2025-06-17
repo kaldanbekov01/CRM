@@ -71,6 +71,7 @@ a {
     overflow-y: auto;
 }
 
+
 .menu {
     list-style: none;
     padding: 0;
@@ -124,7 +125,7 @@ header h1 {
 .header-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .secure-icon {
@@ -297,6 +298,11 @@ canvas {
     left: 0;
 }
 
+.menu-wrapper{
+    justify-content: flex-start;
+}
+
+
 /* Darkening the background */
 .overlay {
     position: fixed;
@@ -333,6 +339,8 @@ body.sidebar-open {
 header {
     left: 0px; 
     width: 100vw;
+    display: flex;
+    justify-content: space-between;
 }
 
 header h1 {
@@ -348,6 +356,10 @@ h1 .icon {
     display: flex;
     align-items: flex-start;
     gap: 25px;
+}
+
+.header-right {
+    gap: 10px;
 }
 
 .header-right .icon-bell{

@@ -531,6 +531,9 @@ h1 .icon {
     padding: 0 7px;
     font-size: 2px;
 }
+.add-product{
+    display: none;
+}
 
 .add-product {
     padding: 10px 15px;

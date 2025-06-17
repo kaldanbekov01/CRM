@@ -348,6 +348,10 @@ body.sidebar-open {
     padding: 12px 0;
 }
 
+.menu-wrapper{
+    justify-content: flex-start;
+}
+
 /* Header */
 header {
     left: 0px; 

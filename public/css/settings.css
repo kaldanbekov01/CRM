@@ -380,3 +380,382 @@ input:checked + .slider:before {
 .dropdown-options li:hover {
   background-color: #dff7ee;
 }
+
+.access{
+    display: flex;
+    justify-content:first baseline;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 50px;
+}
+
+
+/* Burger menu */
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.burger div {
+  width: 20px;
+  height: 3px;
+  background-color: #00A27F;
+  margin: 2px 0;
+  transition: 0.4s;
+  border-radius: 5px;
+}
+
+@media (max-width: 425px){
+
+.burger {
+    display: flex;
+}
+
+.hide-on-mobile {
+    display: none !important;
+}
+
+.main-content {
+    margin-left: 0px; 
+    width: 100vw;
+    height: 100vh;
+    padding: 100px 20px 30px; 
+}
+
+/* Sidebar */
+.sidebar{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    padding: 35px;
+    background-color: #F0F4F3;
+    border-right: 1px solid #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    z-index: 1001;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.menu-wrapper{
+    justify-content: flex-start;
+}
+
+/* Darkening the background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Disabling scrolling when the sidebar is active */
+body.sidebar-open {
+    overflow: hidden;
+}
+
+.logo {
+    font-size: 30px;
+}
+
+.menu li {
+    padding: 12px 0;
+}
+
+/* Header */
+header {
+    left: 0px; 
+    width: 100vw;
+}
+
+header h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+h1 .icon {
+    display: none;
+}
+
+.header-left{
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.header-right .icon-bell{
+    display: none;
+}
+
+
+/* User Information */
+.user-info {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 8px 0px;
+    border-radius: 12px;
+    gap: 10px;
+}
+
+.user-details{
+    display: none;
+}
+
+/* main content  */
+.settings-card {
+    background-color: #E1F9F1;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.settings-card h2 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #007058;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.access{
+    display: flex;
+    justify-content:first baseline;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.access label{
+    color: #007058;
+    font-size: 12px;
+    width: 50%;
+}
+
+#selectedEmployee{
+    font-size: 10px;
+}
+
+.employee-dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #E1F9F1;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  width: 300px;
+}
+
+.employee-dropdown .arrow-icon {
+  color: #007058;
+  font-size: 14px;
+}
+
+#employee-options {
+  display: none;
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+  background-color: white;
+}
+
+#employee-options li {
+  padding: 12px 20px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 10px;
+  color: #007058;
+  transition: background-color 0.2s;
+}
+
+#employee-options li:hover {
+  background-color: #dff7ee;
+}
+
+.access-switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Switch toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 42px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #12AA5B;
+}
+
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+
+.access-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.access-switch span{
+    font-size: 12px;
+}
+
+.send-btn {
+    background-color: #12AA5B;
+    color: white;
+    border: none;
+    padding: 10px 50px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Language dropdown */
+.language-card{
+    display: flex;
+    justify-content: space-between;
+    background-color: #E1F9F1;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.language-card h2{
+    font-size: 12px;
+    font-weight: 500;
+    color: #007058;
+    margin-bottom: 5px;
+}
+
+.language-select select {
+    width: 200px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background-color: #f3fef8;
+    font-size: 10px;
+    color: #007058;
+}
+
+.language-labels .subtitle {
+  font-size: 10px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.language-dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #E1F9F1;
+  padding: 0px 20px;
+  border-radius: 14px;
+  font-size: 12px;
+  color: #555;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  width: 250px;
+}
+
+.arrow-icon {
+  color: #555;
+  font-size: 14px;
+}
+
+.dropdown-options {
+  display: none;
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+  width: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+}
+
+.dropdown-options li {
+  padding: 12px 20px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  color: #007058;
+  transition: background-color 0.2s;
+}
+
+.dropdown-options li:hover {
+  background-color: #dff7ee;
+}
+}

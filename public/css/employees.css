@@ -386,6 +386,7 @@ header h1 {
     z-index: 1001;
 }
 
+
 .sidebar.active {
     left: 0;
 }
@@ -420,6 +421,10 @@ body.sidebar-open {
 
 .menu li {
     padding: 12px 0;
+}
+
+.menu-wrapper{
+    justify-content: flex-start;
 }
 
 /* Header */
@@ -516,4 +521,36 @@ h1 .icon {
 .employee-table td {
     padding: 10px;
 }
+}
+
+/* Modal overlay */
+.modal {
+    background: #E1F9F1;
+    padding: 40px;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 80%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.modal label{
+    font-size: 12px;
+}
+
+.modal h2 {
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.modal input {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.114);
+}
+
+.modal-buttons button {
+    font-size: 12px;
 }

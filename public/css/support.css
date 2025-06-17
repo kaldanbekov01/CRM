@@ -53,66 +53,6 @@ a {
     flex-direction: column;
     overflow-x: auto;
 }
-.ai-chat-box {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-    font-family: 'Montserrat', sans-serif;
-}
-
-.chat-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #007058;
-    margin-bottom: 16px;
-}
-
-.ai-textarea {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    resize: none;
-    font-size: 16px;
-    transition: border 0.2s ease;
-}
-
-.ai-textarea:focus {
-    outline: none;
-    border-color: #007058;
-    box-shadow: 0 0 5px rgba(0, 112, 88, 0.2);
-}
-
-.aiBtn:hover {
-    background-color: #005f4e;
-}
-
-.ai-response-box {
-    margin-top: 20px;
-    background: #f1f4f6;
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 15px;
-    color: #333;
-    min-height: 60px;
-    white-space: pre-wrap;
-}
-
-.aiBtn{
-    background-color: #00A27F;
-    color: white;
-    padding: 15px 50px;
-    border-radius: 15px;
-    font-size: 13px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.228);
-}
 
 .menu-wrapper {
     flex-grow: 1; 
@@ -183,6 +123,10 @@ header h1 {
     color: #333;
 }
 
+.back{
+    display: none;
+}
+
 /* User Information */
 .user-info {
     display: flex;
@@ -205,10 +149,10 @@ header h1 {
 
  /* main content  */
 .main-content {
-    margin-left: 330px; 
+    margin-left: 310px; 
     padding: 150px 40px 30px; 
     background-color: white;
-    width: calc(100vw - 330px);
+    width: calc(100vw - 280px);
     height: 100vh;
     overflow-y: auto;
 }
@@ -273,4 +217,486 @@ header h1 {
 .faq-question.active i {
     transform: rotate(180deg);
     transition: transform 0.3s;
+}
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-bubble {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    line-height: 1.4;
+    font-size: 15px;
+    word-wrap: break-word;
+}
+
+.chat-bubble.user {
+    align-self: flex-end;
+    background-color: #D1F4EA;
+    color: #0A0A0A;
+    border-bottom-right-radius: 4px;
+}
+
+.chat-bubble.ai {
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+/* AI chat */
+.expand-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s ease;
+  color: #333;
+}
+
+.expand-btn:hover {
+  transform: scale(1.1);
+}
+
+.ai-chat-box {
+    width: 100%;
+    height: 100%;
+    background: #e6fcf1;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  
+  .chat-header {
+    margin-bottom: 12px;
+  }
+  
+  .chat-bubble {
+    display: inline-block;
+    background-color: #3b877c;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    max-width: 70%;
+    word-wrap: break-word;
+  }
+  
+  .smartai-name {
+    color: #f8c600;
+    font-weight: bold;
+  }
+  
+  .chat-footer {
+    display: flex;
+    background-color: #dcf5ea;
+    padding: 8px 12px;
+    border-radius: 20px;
+  }
+  
+  .chat-footer textarea {
+    resize: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    padding: 6px;
+  }
+  
+  .send-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #00a27f;
+    padding: 6px;
+  }
+  
+  /* Burger menu */
+  .burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+  
+  .burger div {
+    width: 20px;
+    height: 3px;
+    background-color: #00A27F;
+    margin: 2px 0;
+    transition: 0.4s;
+    border-radius: 5px;
+  }
+
+
+  /* AI chat */
+.ai-chat-box.fullscreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #e6fcf1;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  body.chat-expanded .main-content > *:not(.ai-chat-box) {
+      display: none;
+  }
+  .expand-btn,
+  .collapse-btn {
+    top: 10px;
+    right: 100px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  .collapse-btn {
+    font-size: 28px;
+    color: #333;
+    display: none;
+  }
+  
+  .ai-header-btn{
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+  }
+  
+  .ai-chat-box.fullscreen .collapse-btn{
+      display: block;
+  }
+    
+  .ai-chat-box {
+      width: 100%;
+      background: #e6fcf1;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: sans-serif;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+  }
+  
+  .chat-header {
+    margin-bottom: 12px;
+  }
+  
+  .chat-bubble {
+    display: inline-block;
+    background-color: #57A090;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    max-width: 70%;
+    word-wrap: break-word;
+    font-style: italic;
+  }
+  
+  .smartai-name {
+    color: #f8c600;
+    font-weight: bold;
+  }
+  
+  .chat-footer {
+    display: flex;
+    background-color: #dcf5ea;
+    padding: 8px 12px;
+    border-radius: 20px;
+  }
+  
+  .chat-footer textarea {
+    resize: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    padding: 6px;
+  }
+  
+  .send-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #00a27f;
+    padding: 6px;
+  }
+  
+  /* Burger menu */
+  .burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+  
+  .burger div {
+    width: 20px;
+    height: 3px;
+    background-color: #00A27F;
+    margin: 2px 0;
+    transition: 0.4s;
+    border-radius: 5px;
+  }
+  
+  @media (max-width: 425px){
+  
+  .burger {
+      display: flex;
+  }
+  
+  .hide-on-mobile {
+      display: none !important;
+  }
+  
+  .main-content {
+      margin-left: 0px; 
+      width: 100vw;
+      height: 100vh;
+      padding: 100px 20px 30px; 
+  }
+  
+  /* Sidebar */
+  .sidebar{
+      display: block;
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100vh;
+      padding: 35px;
+      background-color: #F0F4F3;
+      border-right: 1px solid #e1e1e1;
+      display: flex;
+      flex-direction: column;
+      overflow-x: auto;
+      z-index: 1001;
+  }
+  
+  .sidebar.active {
+      left: 0;
+  }
+  
+  .menu-wrapper{
+      justify-content: flex-start;
+  }
+  
+  /* Darkening the background */
+  .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+  }
+  
+  .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+  }
+  
+  /* Disabling scrolling when the sidebar is active */
+  body.sidebar-open {
+      overflow: hidden;
+  }
+  
+  .logo {
+      font-size: 30px;
+  }
+  
+  .menu li {
+      padding: 12px 0;
+  }
+  
+  /* Header */
+  header {
+      left: 0px; 
+      width: 100vw;
+  }
+  
+  header h1 {
+      font-size: 20px;
+      font-weight: 500;
+  }
+  
+  h1 .icon {
+      display: none;
+  }
+  
+  .header-left{
+      display: flex;
+      align-items: flex-start;
+      gap: 25px;
+  }
+  
+  .header-right .icon-bell{
+      display: none;
+  }
+  
+  .back{
+      display: inline;
+      color: #00A27F;
+  }
+  
+  
+  /* User Information */
+  .user-info {
+      display: flex;
+      align-items: center;
+      background-color: white;
+      padding: 8px 0px;
+      border-radius: 12px;
+      gap: 10px;
+  }
+  
+  .user-details{
+      display: none;
+  }
+  
+  /* main content  */
+  .help-box {
+      background-color: #E6FAF4;
+      border-radius: 20px;
+      padding: 30px 20px;
+      font-size: 12px;
+      color: #007058;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .help-box a{
+      color: #F9B814;
+  }
+  
+  .help-box h4{
+      font-size: 16px;
+  }
+  
+  .faq-question {
+      background-color: #DFF6ED;
+      color: #007058;
+      padding: 15px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      font-size: 12px;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .faq-question:hover {
+      background-color: #ccf0e0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .faq-item {
+      margin-bottom: 10px; 
+  }
+  
+  .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease, margin-top 0.3s ease;
+      background-color: white;
+      padding: 0 20px;
+      margin-top: 0;
+      margin-bottom: 50px;
+      border-radius: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      color: #007058;
+      font-size: 12px;
+  }
+  
+  .faq-answer.open {
+      max-height: 200px;
+      padding: 15px 20px;
+      margin-top: 5px;
+  }
+
+  .faq-question.active i {
+    transform: rotate(180deg);
+    transition: transform 0.3s;
+}
+
+/* AI chat */
+.ai-chat-box {
+  width: 100%;
+  background: #e6fcf1;
+  border-radius: 12px;
+  padding: 16px;
+  font-family: sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.chat-header {
+  margin-bottom: 12px;
+}
+
+.chat-bubble {
+  display: inline-block;
+  background-color: #3b877c;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.smartai-name {
+  color: #f8c600;
+  font-weight: bold;
+}
+
+.chat-footer {
+  display: flex;
+  background-color: #dcf5ea;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+.chat-footer textarea {
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 12px;
+  padding: 6px;
+}
+
+.send-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #00a27f;
+  padding: 6px;
+}
 }

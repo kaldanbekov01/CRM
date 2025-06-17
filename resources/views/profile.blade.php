@@ -52,8 +52,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="full_name" data-i18n="full_name">Full Name</label>
-                    <input type="text" id="full_name" name="full_name" value="{{ $user->firstName }} {{ $user->lastName }}" >
+                    <label for="full_name" data-i18n="full_name">First Name</label>
+                    <input type="text" id="full_name" name="full_name" value="{{ $user->firstName }}" >
+                </div>
+
+                <div class="form-group">
+                    <label for="full_name" data-i18n="full_name">Last Name</label>
+                    <input type="text" id="full_name" name="full_name" value="{{ $user->lastName }}" >
                 </div>
 
                 <div class="form-group">

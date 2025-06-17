@@ -223,63 +223,61 @@
                             fill="#00A27F" />
                     </svg> <span data-i18n="dashboard">Dashboard</span></a>
             </h1>
-            <div class="header-right">
-                <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
+        </div>
+        <div class="header-right">
+            <svg width="24" height="24" viewBox="0 0 48 48" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M44 24V9H24H4V24V39H24" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M30 30C30 29 35 27 35 27C35 27 40 29 40 30C40 38 35 40 35 40C35 40 30 38 30 30Z"
+                    fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                <path d="M4 9L24 24L44 9" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
+                    stroke-linejoin="round" />
+            </svg>
+            <div class="user-info">
+                <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
-                    <path d="M44 24V9H24H4V24V39H24" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    <path d="M30 30C30 29 35 27 35 27C35 27 40 29 40 30C40 38 35 40 35 40C35 40 30 38 30 30Z"
-                        fill="none" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                    <path d="M4 9L24 24L44 9" stroke="#00A27F" stroke-width="4" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                    <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F" stroke-width="4"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F"
+                        stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4"
+                        stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                <div class="user-info">
-                    <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F"
-                            stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M42 44C42 34.0589 33.9411 26 24 26C14.0589 26 6 34.0589 6 44" stroke="#00A27F"
-                            stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <i class="fas fa-user-circle user-icon"></i>
-                    <div class="user-details">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @if ($user)
-                                    <span class="user-name">{{ $user->firstName }} {{ $user->lastName }}</span>
-                                    <span class="user-role">Admin</span>
-                                @elseif ($employee)
-                                    <span class="user-name">{{ $employee->username }}</span>
-                                    <span class="user-role">Employee</span>
-                                @endif
+                <i class="fas fa-user-circle user-icon"></i>
+                <div class="user-details">
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            @if ($user)
+                                <span class="user-name">{{ $user->firstName }} {{ $user->lastName }}</span>
+                                <span class="user-role">Admin</span>
+                            @elseif ($employee)
+                                <span class="user-name">{{ $employee->username }}</span>
+                                <span class="user-role">Employee</span>
+                            @endif
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item fw-bold text-center px-4 py-2" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item fw-bold text-center px-4 py-2" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-
-                        </li>
-                    </div>
+                    </li>
                 </div>
             </div>
         </div>
-        <div class="overlay"></div>
     </header>
 
 
-
+    <div class="overlay"></div>
 
 
     <main class="py-4 container">
@@ -289,6 +287,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="../js/lang.js"></script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -32,13 +32,22 @@ function showProducts(category) {
 
     const div = document.createElement("div");
     div.className = "product-card";
+
+    const isOutOfStock = availableStock <= 0;
+
     div.innerHTML = `
-      <i style="margin-top: 40px;" class="fas fa-box"></i>
-      <div>${product.name}</div>
-      <div><b>${product.price.toLocaleString()} KZT</b></div>
-      <div>Stock: ${availableStock}</div>
-      <button class="add-product-btn" style="padding:0px; margin-top: 10px; height:60px; font-size:14px; border-radius:10px;" onclick="toggleCartProduct(${product.id}, '${product.name}', ${product.price}, ${product.stock_quantity})">Add</button>
-    `;
+  <i style="margin-top: 40px;" class="fas fa-box"></i>
+  <div>${product.name}</div>
+  <div><b>${product.price.toLocaleString()} KZT</b></div>
+  <div>Stock: ${availableStock}</div>
+  <button class="add-product-btn"
+    style="padding:0px; margin-top: 10px; height:60px; font-size:14px; border-radius:10px;"
+    ${isOutOfStock ? 'disabled style="background:gray;cursor:not-allowed;"' : ''}
+    onclick="${isOutOfStock ? '' : `toggleCartProduct(${product.id}, '${product.name}', ${product.price}, ${product.stock_quantity})`}">
+    ${isOutOfStock ? 'Out of Stock' : 'Add'}
+  </button>
+`;
+
     productRow.appendChild(div);  // Append the product to the current row
   });
 
@@ -61,7 +70,7 @@ function toggleCartProduct(id, name, price, stock_quantity) {
     // If it's already in the cart, increase the quantity
     if (cart[index].quantity < cart[index].stock_quantity) {
       cart[index].quantity += 1;
-    }else{
+    } else {
       alert(`Product ${name}'s quantity is 0.`);
     }
   }

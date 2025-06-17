@@ -86,9 +86,6 @@
                         {{ $category->name }}
                     </div>
                 @endforeach
-
-
-
             </div>
 
             <div class="products block-3" id="productContainer">

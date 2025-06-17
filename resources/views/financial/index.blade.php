@@ -114,12 +114,12 @@
                 </table>
             </div>
 
-            <div class="chart-card" style="grid-column: span 1;">
+            <div class="chart-card" id="net-savings">
                 <h3 data-i18n="income_expenses">Income & Expenses</h3>
                 <canvas id="incomeExpenseChart"></canvas>
             </div>
 
-            <div class="chart-card" style="grid-column: span 2;">
+            <div class="chart-card" id="net-savings">
                 <h3 data-i18n="net_savings">Net Savings</h3>
                 <canvas id="netSavingsChart"></canvas>
             </div>
