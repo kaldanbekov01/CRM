@@ -16,10 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function toggleMenu(burgerElement) {
+function toggleMenu() {
   const nav = document.querySelector("nav");
+  const burgerElement = document.querySelector(".burger");
+
   nav.classList.toggle("active");
-  burgerElement.classList.toggle("open"); 
+  burgerElement.classList.toggle("open");
 }
 
 document.addEventListener("DOMContentLoaded", function () {

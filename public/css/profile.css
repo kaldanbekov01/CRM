@@ -247,6 +247,10 @@ header h1 {
     cursor: pointer;
 }
 
+.back{
+  display: none;
+}
+
 /* Logout overlay */
 .modal-overlay {
   display: none;
@@ -462,6 +466,17 @@ h1 .icon {
 
 .header-right .icon-bell{
     display: none;
+}
+
+.back{
+  display: inline;
+}
+
+header a{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
 }
 
 /* main content  */

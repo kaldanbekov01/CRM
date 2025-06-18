@@ -49,31 +49,32 @@ function expandChat() {
 
 
 function collapseChat() {
-  const chatBox = document.querySelector('.ai-chat-box');
-  document.body.classList.remove('chat-expanded');
-  chatBox.classList.remove('fullscreen');
+    const chatBox = document.querySelector('.ai-chat-box');
+    document.body.classList.remove('chat-expanded');
+    chatBox.classList.remove('fullscreen');
 }
 
 function expandChat() {
     const chatBox = document.querySelector('.ai-chat-box');
     const expandBtn = document.getElementById('expandBtn');
     const collapseBtn = document.getElementById('collapseBtn');
-  
+
     chatBox.classList.add('fullscreen');
     document.body.classList.add('chat-expanded');
-    
+
     expandBtn.style.display = 'none';
     collapseBtn.style.display = 'block';
-  }
-  
-  function collapseChat() {
+}
+
+function collapseChat() {
     const chatBox = document.querySelector('.ai-chat-box');
     const expandBtn = document.getElementById('expandBtn');
     const collapseBtn = document.getElementById('collapseBtn');
-  
+
     chatBox.classList.remove('fullscreen');
     document.body.classList.remove('chat-expanded');
-    
+
     expandBtn.style.display = 'block';
     collapseBtn.style.display = 'none';
-  }
+}
+

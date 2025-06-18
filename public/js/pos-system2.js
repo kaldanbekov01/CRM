@@ -1,12 +1,11 @@
 let currentCategory = null;
 
-// Function to display products
 function showProducts(category) {
-  category = category.toLowerCase().trim(); // normalization for JS
+  category = category.toLowerCase().trim(); 
 
   const filtered = productsByCategory[category] || [];
   const gridArea = document.getElementById("productContainer");
-  gridArea.innerHTML = "";  // Clear previous content
+  gridArea.innerHTML = ""; 
 
   if (filtered.length === 0) {
     const emptyMsg = document.createElement("div");
@@ -16,10 +15,9 @@ function showProducts(category) {
     return;
   }
 
-  // Create product rows in flex
   let productRow;
   filtered.forEach((product, index) => {
-    if (index % 3 === 0) {  // Every 3 products, create a new row
+    if (index % 3 === 0) { 
       productRow = document.createElement("div");
       productRow.className = "product-row";
       gridArea.appendChild(productRow);
@@ -48,26 +46,22 @@ function showProducts(category) {
   </button>
 `;
 
-    productRow.appendChild(div);  // Append the product to the current row
+    productRow.appendChild(div);  
   });
 
   localStorage.setItem("lastCategory", category);
   gridArea.style.display = "flex";
-  gridArea.style.flexWrap = "wrap"; // Enable wrapping of products into rows
+  gridArea.style.flexWrap = "wrap"; 
 }
 
-// Function to add product to the cart
 function toggleCartProduct(id, name, price, stock_quantity) {
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
-  // Check if product already exists in the cart
   const index = cart.findIndex(p => p.id === id);
 
   if (index === -1) {
-    // If the product isn't in the cart yet, add it
     cart.push({ id, name, price, stock_quantity, quantity: 1 });
   } else {
-    // If it's already in the cart, increase the quantity
     if (cart[index].quantity < cart[index].stock_quantity) {
       cart[index].quantity += 1;
     } else {
@@ -75,14 +69,11 @@ function toggleCartProduct(id, name, price, stock_quantity) {
     }
   }
 
-  // Save the updated cart in localStorage
   localStorage.setItem("cart", JSON.stringify(cart));
 
-  // Render the updated cart immediately after the product is added
   renderCart();
 }
 
-// Function to render the cart
 function renderCart() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
   const tbody = document.querySelector(".product-table tbody");
@@ -96,7 +87,6 @@ function renderCart() {
 
   let total = 0;
 
-  // Only render products that are in the cart
   cart.forEach(item => {
     if (item.quantity > 0 && item.price) {
       const itemTotal = item.price * item.quantity;
@@ -123,22 +113,19 @@ function renderCart() {
   document.querySelector(".total-amount").innerText = `${total.toLocaleString()} KZT`;
 }
 
-// Function to remove item from cart
 function removeFromCart(id) {
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  cart = cart.filter(item => item.id != id);  // Remove by product id
+  cart = cart.filter(item => item.id != id); 
   localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
 }
 
-// Function to update quantity in cart
 function updateQty(id, delta) {
   let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const item = cart.find(p => p.id == id);  // Find the item by id
+  const item = cart.find(p => p.id == id);  
   if (!item) return;
 
   if (delta > 0) {
-    // Increase quantity only if there's enough stock
     if (item.quantity < item.stock_quantity) {
       item.quantity += delta;
     }
@@ -149,12 +136,9 @@ function updateQty(id, delta) {
   renderCart();
 }
 
-// On page load, render the cart
 document.addEventListener("DOMContentLoaded", () => {
-  // Render cart if available
   renderCart();
 
-  // Auto-show the last selected category
   const savedCategory = localStorage.getItem("lastCategory");
   const defaultCategory = Object.keys(productsByCategory)[0];
 
@@ -166,12 +150,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-// Handle total on click event
 document.querySelector(".next-total").addEventListener("click", function () {
   const totalText = document.querySelector(".total-amount").innerText;
   const total = parseFloat(totalText.replace(/\D/g, ''));
   localStorage.setItem("posTotal", total);
   window.location.href = "/posSystem";
 });
+

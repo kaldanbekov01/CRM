@@ -54,7 +54,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Filled by JS -->
                     </tbody>
                 </table>
             </div>

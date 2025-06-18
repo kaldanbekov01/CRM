@@ -24,7 +24,7 @@ $employee = Auth::guard('employee')->check() ? Auth::guard('employee')->user() :
                 stroke-linejoin="round" />
         </svg>
         <div class="user-info">
-            <svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
+            <a href="/profile"><svg class="icon" width="24" height="24" viewBox="0 0 48 48" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <circle cx="24" cy="12" r="8" fill="none" stroke="#00A27F" stroke-width="4"
                     stroke-linecap="round" stroke-linejoin="round" />
@@ -32,7 +32,7 @@ $employee = Auth::guard('employee')->check() ? Auth::guard('employee')->user() :
                     stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                 <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4"
                     stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+            </svg></a>
             <i class="fas fa-user-circle user-icon"></i>
             <div class="user-details">
                 <li class="nav-item dropdown">

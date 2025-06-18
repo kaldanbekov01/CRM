@@ -512,7 +512,6 @@ h1 .icon {
 .client-table td {
     padding: 10px;
 }
-}
  
 /* Modal overlay */
 .modal {
@@ -544,4 +543,5 @@ h1 .icon {
 
 .modal-buttons button {
     font-size: 12px;
+}
 }

@@ -1,50 +1,34 @@
-// const ctxIncomeExpense = document.getElementById('incomeExpenseChart').getContext('2d');
-// new Chart(ctxIncomeExpense, {
-//   type: 'line',
-//   data: {
-//     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//     datasets: [
-//       {
-//         label: 'Income',
-//         data: incomeData,
-//         borderColor: '#007058',
-//         fill: false,
-//         tension: 0.3
-//       },
-//       {
-//         label: 'Expenses',
-//         data: expenseData,
-//         borderColor: '#99CFCB',
-//         fill: false,
-//         tension: 0.3
-//       }
-//     ]
-//   },
-//   options: {
-//     responsive: true,
-//     maintainAspectRatio: false,
-//     plugins: { legend: { display: true } },
-//     scales: { y: { beginAtZero: false } }
-//   }
-// });
+document.querySelector('.add-employee').addEventListener('click', () => {
+    document.getElementById('employeeModal').style.display = 'flex';
+  });
+  
+  document.getElementById('cancelBtn').addEventListener('click', () => {
+    document.getElementById('employeeModal').style.display = 'none';
+  });
 
-// const ctxNetSavings = document.getElementById('netSavingsChart').getContext('2d');
-// new Chart(ctxNetSavings, {
-//   type: 'line',
-//   data: {
-//     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-//     datasets: [{
-//       label: 'Net savings',
-//       data: savingsData,
-//       borderColor: '#20a090',
-//       fill: false,
-//       tension: 0.3
-//     }]
-//   },
-//   options: {
-//     responsive: true,
-//     maintainAspectRatio: false,
-//     plugins: { legend: { display: false } },
-//     scales: { y: { beginAtZero: false } }
-//   }
-// });
+  document.addEventListener('DOMContentLoaded', function () {
+    const burger = document.querySelector('.burger');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
+
+    function openSidebar() {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+        body.classList.add('sidebar-open');
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        body.classList.remove('sidebar-open');
+    }
+
+    burger.addEventListener('click', function () {
+        openSidebar();
+    });
+
+    overlay.addEventListener('click', function () {
+        closeSidebar();
+    });
+});

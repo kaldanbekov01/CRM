@@ -17,7 +17,9 @@
                         stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M24 44L28 39L24 26L20 39L24 44Z" fill="none" stroke="#00A27F" stroke-width="4"
                         stroke-linecap="round" stroke-linejoin="round" />
-                </svg> <span data-i18n="profile">Profile</span></h1>
+                </svg> 
+                <svg onclick="window.history.back();" class="back" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31 36L19 24L31 12" stroke="#00A27F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-i18n="profile">Profile</span></h1>
     </header>
 
     <div class="main-content">
@@ -108,4 +110,19 @@
 
     <script src="../js/profile.js"></script>
     <script src="../js/lang.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoutButton = document.querySelector('#logout-form button[type="submit"]');
+    
+            if (logoutButton) {
+                logoutButton.addEventListener("click", function () {
+                    // Clear localStorage before logout
+                    localStorage.removeItem("cart");
+                    localStorage.removeItem("lastCategory");
+                    localStorage.removeItem("posTotal");
+                });
+            }
+        });
+    </script>
+    
 @endsection
