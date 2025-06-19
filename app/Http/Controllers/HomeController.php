@@ -37,7 +37,6 @@ class HomeController extends Controller
             $employeeId = $employee->id;
             $isEmployee = true;
 
-            // Заказы только этого сотрудника
             $orders = Order::with(['employee', 'client', 'basket.product'])
                 ->where('employee_id', $employeeId)
                 ->orderByDesc('created_at')
@@ -50,7 +49,6 @@ class HomeController extends Controller
             $employeeId = null;
             $isEmployee = false;
 
-            // Все заказы всех сотрудников пользователя
             $employeeIds = Employee::where('user_id', $userId)->pluck('id');
 
             $orders = Order::with(['employee', 'client', 'basket.product'])
@@ -64,7 +62,6 @@ class HomeController extends Controller
         $totalSales = $orders->sum('total_amount');
         $totalOrders = $orders->count();
 
-        // Top Products
         $topProductsQuery = DB::table('baskets')
             ->join('orders', 'baskets.order_id', '=', 'orders.id')
             ->join('products', 'baskets.product_id', '=', 'products.id')
@@ -83,7 +80,6 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
-        // Weekly Orders
         $weeklyOrdersQuery = DB::table('orders')
             ->join('baskets', 'orders.id', '=', 'baskets.order_id')
             ->join('products', 'baskets.product_id', '=', 'products.id')
@@ -102,7 +98,6 @@ class HomeController extends Controller
             ->get()
             ->pluck('total', 'day');
 
-        // Sales by Category
         $salesByCategoryQuery = DB::table('orders')
             ->join('baskets', 'orders.id', '=', 'baskets.order_id')
             ->join('products', 'baskets.product_id', '=', 'products.id')
@@ -119,7 +114,6 @@ class HomeController extends Controller
             ->groupBy('categories.name')
             ->get();
 
-        // Защита от пустых графиков
         $weeklyOrders = $weeklyOrders->isEmpty() ? collect(['Monday' => 0]) : $weeklyOrders;
         $salesByCategory = $salesByCategory->isEmpty() ? collect([['category' => 'None', 'total' => 0]]) : $salesByCategory;
         $topProducts = $topProducts->isEmpty() ? collect([['product' => 'None', 'quantity' => 0]]) : $topProducts;

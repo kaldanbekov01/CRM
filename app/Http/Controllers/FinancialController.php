@@ -22,7 +22,6 @@ class FinancialController extends Controller
 
         $today = Carbon::today()->toDateString();
 
-        // Get all products of the user (via suppliers)
         $products = Product::whereIn('supplier_id', function ($query) use ($user) {
             $query->select('id')
                 ->from('suppliers')
@@ -37,7 +36,6 @@ class FinancialController extends Controller
             return $product->stock_quantity * $product->wholesale_price;
         });
 
-        // Create or update financial record for today
         $financial = Financial::firstOrNew(
             ['user_id' => $user->id, 'date' => $today],
             ['income' => 0, 'expense' => 0]
@@ -48,7 +46,6 @@ class FinancialController extends Controller
         $financial->save();
         $financials = Financial::orderBy('date')->get();
 
-        // Group by month
         $monthlyIncome = [];
         $monthlyExpenses = [];
         $monthlySavings = [];

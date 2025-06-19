@@ -181,11 +181,9 @@ xmlns="http://www.w3.org/2000/svg">
         const userText = messageInput.value.trim();
         if (!userText) return;
 
-        // Show user message
         addMessage('user', userText);
         messageInput.value = '';
 
-        // Show temporary loading message
         const loadingMessage = addMessage('ai', 'Thinking...');
 
         try {

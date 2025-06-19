@@ -33,7 +33,6 @@ class OrderController extends Controller
                 ->get();
         }
 
-        // ➕ Chart: Daily totals for last 7 days
         $dailySales = Order::selectRaw('DATE(created_at) as date, SUM(total_amount) as total')
             ->when(isset($employee), fn($q) => $q->where('employee_id', $employee->id))
             ->when(isset($user), fn($q) => $q->whereIn('employee_id', $employeeIds))
@@ -51,7 +50,6 @@ class OrderController extends Controller
             $totals[] = $day ? (int) $day->total : 0;
         }
 
-        // ➕ Map orders with products
         $ordersWithProducts = $orders->map(function ($order) {
             return [
                 'order_id' => $order->id,
@@ -70,26 +68,23 @@ class OrderController extends Controller
             ];
         });
 
-        // Total sales from this week
         $week1Total = Order::when(isset($employee), fn($q) => $q->where('employee_id', $employee->id))
             ->when(isset($user), fn($q) => $q->whereIn('employee_id', $employeeIds))
             ->whereBetween('created_at', [now()->subDays(6)->startOfDay(), now()->endOfDay()])
             ->sum('total_amount');
 
-        // Total sales from previous week
         $week2Total = Order::when(isset($employee), fn($q) => $q->where('employee_id', $employee->id))
             ->when(isset($user), fn($q) => $q->whereIn('employee_id', $employeeIds))
             ->whereBetween('created_at', [now()->subDays(13)->startOfDay(), now()->subDays(7)->endOfDay()])
             ->sum('total_amount');
 
-        // Calculate percentage change
         if ($week2Total == 0) {
             $percentageChange = $week1Total > 0 ? 100 : 0;
         } else {
             $percentageChange = (($week1Total - $week2Total) / $week2Total) * 100;
         }
 
-        $percentageChange = round($percentageChange, 1); // format to 1 decimal
+        $percentageChange = round($percentageChange, 1); 
 
 
         return view('order.index', [

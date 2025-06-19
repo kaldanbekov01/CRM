@@ -1,5 +1,3 @@
-<!-- resources/views/order/store.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')

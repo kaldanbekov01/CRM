@@ -17,7 +17,7 @@ class ClientController extends Controller
     {
         if (Auth::guard('employee')->check()) {
             $user = Auth::guard('employee')->user();
-            $userId = $user->user_id; // Employee's linked admin user
+            $userId = $user->user_id; 
         } else {
             $user = Auth::guard('web')->user();
             $userId = $user->id;
@@ -42,7 +42,7 @@ class ClientController extends Controller
     {
         if (Auth::guard('employee')->check()) {
             $user = Auth::guard('employee')->user();
-            $userId = $user->user_id; // Employee's linked admin user
+            $userId = $user->user_id;
         } else {
             $user = Auth::guard('web')->user();
             $userId = $user->id;

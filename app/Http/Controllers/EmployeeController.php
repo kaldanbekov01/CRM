@@ -19,10 +19,8 @@ class EmployeeController extends Controller
     {
         $userId = Auth::user()->id;
 
-        // Start query with user_id condition
         $query = Employee::where('user_id', $userId);
 
-        // Apply search if present
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->where(function ($q) use ($search) {
@@ -31,7 +29,6 @@ class EmployeeController extends Controller
             });
         }
 
-        // Paginate the final query (important!)
         $employees = $query->get();
 
         return view('employee.index', compact('employees'));

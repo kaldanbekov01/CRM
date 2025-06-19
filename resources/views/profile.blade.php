@@ -116,7 +116,6 @@
     
             if (logoutButton) {
                 logoutButton.addEventListener("click", function () {
-                    // Clear localStorage before logout
                     localStorage.removeItem("cart");
                     localStorage.removeItem("lastCategory");
                     localStorage.removeItem("posTotal");

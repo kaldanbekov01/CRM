@@ -37,7 +37,7 @@ class CategoryController extends Controller
                 Rule::unique('categories')->where(fn ($query) => $query->where('user_id', auth()->id())),
             ],
         ], [
-            'name.unique' => 'Такая категория уже существует.',
+            'name.unique' => 'Exist this category.',
         ]);
         
 

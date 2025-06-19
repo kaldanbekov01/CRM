@@ -25,19 +25,16 @@ class PosSystemController extends Controller
     {
         if (Auth::guard('employee')->check()) {
             $user = Auth::guard('employee')->user();
-            $userId = $user->user_id; // Employee's linked admin user
+            $userId = $user->user_id;
         } else {
             $user = Auth::guard('web')->user();
             $userId = $user->id;
         }
 
-        // All suppliers that belong to the admin user
         $supplierIds = Supplier::where('user_id', $userId)->pluck('id');
 
-        // All categories belonging to the same user
         $categories = Category::where('user_id', $userId)->get();
 
-        // Fetch products by supplier belonging to that user
         $products = Product::with(['category', 'supplier'])
             ->whereIn('supplier_id', $supplierIds)
             ->orderBy('category_id')
@@ -121,7 +118,6 @@ class PosSystemController extends Controller
     {
         \Log::info('Checkout started', ['data' => $request->all()]);
 
-        // ✅ Только employee может оформлять заказ
         if (!Auth::guard('employee')->check()) {
             return response()->json([
                 'success' => false,
@@ -130,7 +126,7 @@ class PosSystemController extends Controller
         }
 
         $employee = Auth::guard('employee')->user();
-        $user = $employee->user ?? null; // связь с владельцем бизнеса (если есть)
+        $user = $employee->user ?? null; 
 
         $cart = $request->input('cart');
         $totalAmount = $request->input('total_amount');
@@ -140,12 +136,12 @@ class PosSystemController extends Controller
             return response()->json(['success' => false, 'message' => 'Missing data.'], 400);
         }
 
-        $client = Client::where('user_id', $employee->user_id)->first(); // или по другой логике
+        $client = Client::where('user_id', $employee->user_id)->first(); 
 
         $order = Order::create([
             'total_amount' => $totalAmount,
             'payment_method' => $paymentMethod,
-            'client_id' => $client?->id, // если клиент не найден — будет null
+            'client_id' => $client?->id,
             'employee_id' => $employee->id,
         ]);
 
@@ -156,14 +152,12 @@ class PosSystemController extends Controller
                 continue;
             }
         
-            // 1. Создать запись в корзине
             Basket::create([
                 'quantity' => $item['quantity'],
                 'product_id' => $item['id'],
                 'order_id' => $order->id,
             ]);
         
-            // 2. Уменьшить stock_quantity у продукта
             $product = Product::find($item['id']);
             if ($product) {
                 $product->stock_quantity = max(0, $product->stock_quantity - $item['quantity']); // не уйдёт в минус
