@@ -13,12 +13,10 @@ class CheckRegistrationCompletedMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // ✅ Skip registration check for employees
         if (Auth::guard('employee')->check()) {
             return $next($request);
         }
 
-        // ✅ Check only for users (web guard)
         if (Auth::guard('web')->check()) {
             $user = Auth::guard('web')->user();
 
