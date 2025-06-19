@@ -46,30 +46,30 @@
                     @endif
                 </div>
             </div>
-            <form class="profile-form" method="POST" action="#">
-                @csrf 
+            <form class="profile-form" method="POST" action="{{ route('profile.update') }}">
+                @csrf
                 <div class="form-group">
                     <label for="email" data-i18n="work_email">Work email*</label>
-                    <input type="email" id="email" name="email" value="{{ $user->email }}" >
+                    <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}">
                 </div>
-
+            
                 <div class="form-group">
-                    <label for="full_name" data-i18n="full_name">First Name</label>
-                    <input type="text" id="full_name" name="full_name" value="{{ $user->firstName }}" >
+                    <label for="firstName" data-i18n="full_name">First Name</label>
+                    <input type="text" id="firstName" name="firstName" value="{{ old('firstName', $user->firstName) }}">
                 </div>
-
+            
                 <div class="form-group">
-                    <label for="full_name" data-i18n="full_name">Last Name</label>
-                    <input type="text" id="full_name" name="full_name" value="{{ $user->lastName }}" >
+                    <label for="lastName" data-i18n="full_name">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" value="{{ old('lastName', $user->lastName) }}">
                 </div>
-
+            
                 <div class="form-group">
                     <label for="phone" data-i18n="phone_number">Phone number</label>
-                    <input type="text" id="phone" name="phone" value="{{ $user->phone }}" >
+                    <input type="text" id="phone" name="phone" value="{{ old('phone', $user->phone) }}">
                 </div>
 
                 <div class="profile-buttons">
-                    <a href="edit_profile.html" class="edit-profile" data-i18n="edit_profile">Edit profile</a>
+                    <button type="submit" class="edit-profile" data-i18n="edit_profile">Save</button>
                     <button type="button" class="logout-btn" onclick="openLogoutModal()"
                         data-i18n="logout">Logout</button>
                 </div>

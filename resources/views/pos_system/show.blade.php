@@ -54,7 +54,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Cart items will be dynamically populated here -->
                     </tbody>
                 </table>
             </div>

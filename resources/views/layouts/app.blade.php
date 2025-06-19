@@ -272,12 +272,10 @@
                 logoutLink.addEventListener("click", function (e) {
                     e.preventDefault();
     
-                    // Clear localStorage keys (cart, lastCategory, etc.)
                     localStorage.removeItem("cart");
                     localStorage.removeItem("lastCategory");
                     localStorage.removeItem("posTotal");
     
-                    // Submit logout form after clearing
                     logoutForm.submit();
                 });
             }

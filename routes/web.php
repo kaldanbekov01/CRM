@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\MultiLoginController;
 use App\Http\Controllers\AIChatController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 
@@ -56,6 +57,8 @@ Route::group(['middleware' => ['multiauth']], function () {
         Route::get('/profile', function () {
             return view('profile');
         })->name('profile');
+        Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    
 
     });
     Route::get('/signup/info', [RegisterController::class, 'step2Form'])->name('register.step2.form');

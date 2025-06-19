@@ -2,12 +2,17 @@
 
 @extends('layouts.app')
 
+
 @section('content')
+    @php
+        $user = Auth::guard('web')->user();
+        $employee = Auth::guard('employee')->check() ? Auth::guard('employee')->user() : null;
+    @endphp
     <div class="container">
         <div class="receipt-wrapper">
             <div class="receipt-box">
                 <div class="title">ИП «DEMO»</div>
-                <div class="subtitle">BIN (IIN): 999999999999<br>DEMO St., 1</div>
+                <div class="subtitle">BIN (IIN): {{ $user->bin }}<br>DEMO St., 1</div>
                 <h2 data-i18n="cheque_title">PRELIMINARY RECEIPT</h2>
 
                 <div class="auto">
@@ -16,8 +21,10 @@
                         <div><strong data-i18n="sale">Sale</strong>: No. {{ $order->id }}</div>
                         <div><strong data-i18n="shift">Shift</strong>: 2</div>
                         <div><strong data-i18n="cashier">Cashier</strong>: 773178</div>
-                        <div><strong data-i18n="date">Date</strong>: <span id="date">{{ now()->toDateString() }}</span></div>
-                        <div><strong data-i18n="time">Time</strong>: <span id="time">{{ now()->toTimeString() }}</span></div>
+                        <div><strong data-i18n="date">Date</strong>: <span id="date">{{ now()->toDateString() }}</span>
+                        </div>
+                        <div><strong data-i18n="time">Time</strong>: <span id="time">{{ now()->toTimeString() }}</span>
+                        </div>
                     </div>
                 </div>
 
@@ -26,7 +33,8 @@
                 <div class="items" id="items-container">
                     @foreach ($order->basket as $item)
                         <div class="item">
-                            <div>{{ $loop->iteration }}. '{{ $item->product->name }}'<br><small>{{ $item->quantity }} × {{ number_format($item->product->price, 2) }} KZT</small></div>
+                            <div>{{ $loop->iteration }}. '{{ $item->product->name }}'<br><small>{{ $item->quantity }} ×
+                                    {{ number_format($item->product->price, 2) }} KZT</small></div>
                             <div>{{ number_format($item->product->price * $item->quantity, 2) }} KZT</div>
                         </div>
                     @endforeach

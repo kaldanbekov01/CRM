@@ -36,7 +36,7 @@ $employee = Auth::guard('employee')->check() ? Auth::guard('employee')->user() :
             <i class="fas fa-user-circle user-icon"></i>
             <div class="user-details">
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="/profile" role="button"
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" @if ($user) href="/profile" @elseif ($employee) href="#" @endif role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         @if ($user)
                             <span class="user-name">{{ $user->firstName }} {{ $user->lastName }}</span>
